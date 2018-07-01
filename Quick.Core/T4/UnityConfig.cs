@@ -1,5 +1,5 @@
 ﻿/* ==============================================================================
-* 命名空间：Quick.Web
+* 命名空间：Quick.Core
 * 类 名 称：UnityConfig
 * 创 建 者：Qing
 * 创建时间：2018-06-18 11:33:07
@@ -22,9 +22,8 @@ using Quick.Data.IRepository;
 using Quick.Data.Repository;
 using System.Configuration;
 using System;
-using System.Web.Mvc;
 
-namespace Quick.Web
+namespace Quick.Core
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.

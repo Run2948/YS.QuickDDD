@@ -129,10 +129,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Start\UnityConfig.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>UnityConfig.cs</LastGenOutput>
-    </Content>
     <Content Include="Config\unity.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>unity.config</LastGenOutput>
@@ -191,17 +187,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\DataConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\UnityConfig.cs">
-      <DependentUpon>UnityConfig.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\Base\ErrorPageController.cs" />
+    <Compile Include="Controllers\Base\SettingsController.cs" />
     <Compile Include="Controllers\Business\UserBaseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\T4\UnityController.cs">
       <DependentUpon>UnityController.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -212,7 +205,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CommonResult\ResultInfo.cs" />
+    <Compile Include="Models\RequestModel\LoginRequest.cs" />
+    <Compile Include="Models\RequestModel\PasswordRequest.cs" />
+    <Compile Include="Models\SessionModel\UserSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -243,10 +238,17 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="upload\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Settings\" />
     <Folder Include="Views\Unity\" />
     <Folder Include="Views\UserBase\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Quick.Common\Quick.Common.csproj">
+      <Project>{2F712E1F-F963-4523-A8D4-A9522A1E3D0D}</Project>
+      <Name>Quick.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Quick.Core\Quick.Core.csproj">
       <Project>{969577BA-DE3E-45D2-B9F3-E5362AE19952}</Project>
       <Name>Quick.Core</Name>

@@ -33,13 +33,12 @@ namespace Quick.Data.Entities
     [Serializable]
     public class SiteConfig
     {
-        public SiteConfig()
-        {
-            exemption = 3500;
-        }
-
-        [Display(Name = "免征额")]
+        [Display(Name = "系统名称")]
         [Required]
-        public double exemption { get; set; }
+        public string sitename { get; set; }
+
+        [Display(Name = "系统版本")]
+        [Required]
+        public string version { get; set; }
     }
 }

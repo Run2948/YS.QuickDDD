@@ -31,16 +31,25 @@ namespace Quick.Data.Entities.Sys
     public class SysUser : BaseEntity
     {
         [Required]
-        [DisplayName("用户名")]
+        [Display(Name ="用户名")]
         [MinLength(5,ErrorMessage = "用户名最小长度不能低于6位")]
         [MaxLength(16, ErrorMessage = "账户名最大长度不能超过16位")]
         public string UserName { get; set; }
 
         [Required]
-        [DisplayName("密  码")]
+        [Display(Name ="密  码")]
         [MinLength(6, ErrorMessage = "密码最小长度不能低于6位")]
         [MaxLength(32, ErrorMessage = "密码最大长度不能超过32位")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [Required]
+        [Display(Name = "用户类型")]
+        [DefaultValue(0)]
+        public int UserType { get; set; }
+
+        [MaxLength(8)]
+        [Display(Name = "真实姓名")]
+        public string NickName { get; set; }
     }
 }

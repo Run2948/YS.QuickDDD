@@ -31,17 +31,12 @@ namespace Quick.Services.Service
 {
     public abstract class BaseService<T> : IBaseService<T> where T : class, new()
     {
-        public IDbSession CurrentDbSession
-        {
-            get
-            {
-                return DbSessionFactory.GreateDbSession();//获取DbSession的实例
-            }
-        }
+        public IDbSession CurrentDbSession => DbSessionFactory.GreateDbSession();//获取DbSession的实例
 
-        public BaseService()
+        protected BaseService()
         {
-            SetCurrentRepository(); //子类一定要实现抽象方法。
+            // ReSharper disable once VirtualMemberCallInConstructor
+            SetCurrentRepository();  //子类一定要实现抽象方法。
         }
 
         public abstract void SetCurrentRepository();//抽象方法,作用是设置当前仓储

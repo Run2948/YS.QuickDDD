@@ -29,13 +29,7 @@ namespace Quick.Data.Repository
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class, new()
     {
-        private DbContext db
-        {
-            get
-            {
-                return DbEfContextFactory.GetCurrentDbEfContext();//获取EF上下文的实例
-            }
-        }
+        private DbContext db => DbEfContextFactory.GetCurrentDbEfContext(); //获取EF上下文的实例
 
         public bool Create(T model)
         {

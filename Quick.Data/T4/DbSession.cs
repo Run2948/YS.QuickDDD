@@ -21,7 +21,6 @@ using Quick.Data.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,43 +34,28 @@ namespace Quick.Data.Repository
     /// </summary>
 	 public class DbSession : IDbSession
 	 {
-	    public DbContext db
-        {
-            get
-            {
-                return DbEfContextFactory.GetCurrentDbEfContext();//EF上下文线程内唯一
-            }
-        }
+	    public DbContext Db => DbEfContextFactory.GetCurrentDbEfContext(); //EF上下文线程内唯一
 
-		private ISysUserRepository _SysUserRepository;
+        #region SysUser
+		private ISysUserRepository _sysUserRepository;
         public ISysUserRepository SysUserRepository
         {
-            get
-            {
-                if (_SysUserRepository == null)
-                {
-                    _SysUserRepository = new SysUserRepository();
-                }
-                return _SysUserRepository;
-            }
-
-            set
-            {
-                _SysUserRepository = value;
-            }
+			get => _sysUserRepository ?? (_sysUserRepository = new SysUserRepository());
+            set => _sysUserRepository = value;
         }
+		#endregion
 
 
 		//执行sql脚本
-        public int ExecuteSql(string sql, SqlParameter[] parameters)
+        public int ExecuteSql(string sql, object[] parameters)
         {
-            return db.Database.ExecuteSqlCommand(sql, parameters);
+            return Db.Database.ExecuteSqlCommand(sql, parameters);
         }
 
         //单元工作模式
         public int SaveChanges()
         {
-            return db.SaveChanges();
+            return Db.SaveChanges();
         }
 	 }
 }

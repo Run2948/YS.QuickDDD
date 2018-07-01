@@ -24,7 +24,7 @@ namespace Quick.Web
         {
             var lastError = Server.GetLastError().GetBaseException();
             {
-                QuickLog.LogError(lastError);
+                QuickLog.Error(typeof(MvcApplication), lastError);
             }
         }
     }

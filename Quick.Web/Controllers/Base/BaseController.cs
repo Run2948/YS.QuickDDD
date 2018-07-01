@@ -1,5 +1,4 @@
-﻿using Quick.Web.Models.CommonResult;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using Quick.Core.Domain;
 
 namespace Quick.Web.Controllers
 {

@@ -19,7 +19,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,11 +27,12 @@ namespace Quick.Data.IRepository
 {
 	public interface IDbSession
 	{
+		#region IRepository 
 		ISysUserRepository SysUserRepository  { get; set; }
 
-	
+	    #endregion
 
-        int ExecuteSql(string sql, SqlParameter[] parameters);
+        int ExecuteSql(string sql, object[] parameters);
 
         /// <summary>
         /// 将整个数据库访问层的所有修改都一次性的提交回数据库

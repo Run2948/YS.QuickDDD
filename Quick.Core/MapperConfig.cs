@@ -25,6 +25,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Quick.Core.Domain;
+using Quick.Data.Entities.Sys;
 
 namespace Quick.Core
 {
@@ -44,7 +46,7 @@ namespace Quick.Core
             //Mapper.CreateMap<Member, MembersViewModel>().ForMember(dest => dest.Name, src => src.ResolveUsing(m => string.Format("{0} {1}", m.FirstName, m.LastName)));
 
 
-            // 但由于AutoMaper。Mapper.CreateMap<Source,Dest>()方法已启用，所以在最新版本的AutoMaper中就不可以使用该方法，解决方法如下：
+            // 但由于AutoMaper Mapper.CreateMap<Source,Dest>()方法已启用，所以在最新版本的AutoMaper中就不可以使用该方法，解决方法如下：
             // 将以前使用的Mapper.CreateMap<Source,Dest>()方法改为Mapper.Initialize(x=>x.CreateMap<Source,Dest>());即可。
 
 
@@ -53,7 +55,7 @@ namespace Quick.Core
             // Mapper.Initialize()只能用1次，第2次会覆盖第1次的配置,改为下面的写法就能解决问题：
 
             var cfg = new MapperConfigurationExpression();
-            //cfg.CreateMap<User, UserDto>();
+            cfg.CreateMap<SysUser, UserDto>();
             //cfg.CreateMap<User, UserSession>();
             //cfg.CreateMap<Naire, NaireDto>().ForMember(dest => dest.AnswerCount, src => src.ResolveUsing(m => 0)).ForMember(dest => dest.AnswerScore, src => src.ResolveUsing(m => 0));
             Mapper.Initialize(cfg);

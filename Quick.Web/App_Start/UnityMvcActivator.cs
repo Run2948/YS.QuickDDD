@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity.Mvc;
+using Quick.Core;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Quick.Web.UnityWebActivator), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(Quick.Web.UnityWebActivator), "Shutdown")]
