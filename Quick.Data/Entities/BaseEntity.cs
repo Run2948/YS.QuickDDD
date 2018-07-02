@@ -46,6 +46,7 @@ namespace Quick.Data.Entities
      * |   T：U          | 为 T 提供的类型参数必须是为 U 提供的参数或派生自为 U 提供的参数。                         |
      * ===============================================================================================================
     */
+    [Serializable]
     public class BaseEntity
     {
         public BaseEntity()

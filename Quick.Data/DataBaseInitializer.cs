@@ -57,7 +57,7 @@ namespace Quick.Data
                         NickName = "用户代表",
                         CreateTime = DateTime.Now.AddMinutes(3)
                     }
-                }.ForEach(m => context.SysUser.AddOrUpdate(o => o.UserName, m));
+                }.ForEach(m => context.User.AddOrUpdate(o => o.UserName, m));
                 context.SaveChanges();
             }
             catch (DbEntityValidationException e)

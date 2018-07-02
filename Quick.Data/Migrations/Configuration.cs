@@ -1,3 +1,9 @@
+using System.Collections.Generic;
+using System.Data.SQLite.EF6.Migrations;
+using MySql.Data.Entity;
+using Quick.Common;
+using Quick.Data.Entities.Sys;
+
 namespace Quick.Data.Migrations
 {
     using System;
@@ -9,7 +15,12 @@ namespace Quick.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = true;//启用自动迁移
+            AutomaticMigrationDataLossAllowed = true;//是否允许接受数据丢失的情况，false=不允许，会抛异常；true=允许，有可能数据会丢失
+            if(QuickDbProvider.IsMySql)
+                SetSqlGenerator("MySql.Data.MySqlClient", new MySqlMigrationSqlGenerator());//设置Sql生成器为Mysql的
+            if(QuickDbProvider.IsSqlite)
+                SetSqlGenerator("System.Data.SQLite", new SQLiteMigrationSqlGenerator());//设置Sql生成器为SQLite的
         }
 
         protected override void Seed(Quick.Data.DefaultDbContext context)
@@ -26,6 +37,28 @@ namespace Quick.Data.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            if (context.User.Any())
+            {
+                return;
+            }
+
+            new List<SysUser>
+            {
+                new SysUser
+                {
+                    UserName = "admin",
+                    Password = "123123".ToMd5(),
+                    UserType = 1,
+                    NickName = "管理员代表",
+                },
+                new SysUser
+                {
+                    UserName = "teacher",
+                    Password = "123456".ToMd5(),
+                    NickName = "用户代表",
+                }
+            }.ForEach(m => context.User.AddOrUpdate(o => o.UserName, m));
         }
     }
 }

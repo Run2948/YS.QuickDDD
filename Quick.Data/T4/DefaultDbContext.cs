@@ -29,41 +29,39 @@ namespace Quick.Data
     /// </summary>
     public class DefaultDbContext : DbContext
     {
+
+	    public DefaultDbContext()
+            :base(QuickDbProvider.GetDataBaseProvider())
+        {
+            
+        }
+
 		#region DbSet
 		/// <summary>
         /// SysUser
         /// </summary>
-        public DbSet<SysUser> SysUser { get; set; }
+        public virtual DbSet<SysUser> User { get; set; }
+
 		#endregion
 
-        /// <summary>
-        /// DefaultDbContext
-        /// </summary>
-        public DefaultDbContext() : base("DefaultDbContext")
-        {
-        }
-
-        /// <summary>
-        /// 带参数构造函数
-        /// </summary>
-        /// <param name="connectionString">数据库连接字符串名称</param>
-        public DefaultDbContext(string connectionString) : base(connectionString)
-        {
-        }
-
-        /// <summary>
-        /// OnModelCreating
-        /// </summary>
-        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //移除一对多的级联删除关系
+            //处理一对多的练级删除关系
             //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            //移除表名复数形式
+            //设置实体集的名称是一个多元化的实体类型名称版本
             modelBuilder.Conventions.Remove<PluralizingEntitySetNameConvention>();
+            // Configure Code First to ignore PluralizingTableName convention 
+            // If you keep this convention, the generated tables  
+            // will have pluralized names. 
+            //设置的表的名称是一个多元化的实体类型名称版本
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             //配置实体和数据表的关系
             //modelBuilder.Configurations.AddFromAssembly(typeof(UserConfig).Assembly);
-			base.OnModelCreating(modelBuilder);
+            //EF 默认的schema 是dbo，但是Npgsql默认是public，这里改一下
+            if(QuickDbProvider.IsNpgsql)
+                modelBuilder.HasDefaultSchema("public");
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

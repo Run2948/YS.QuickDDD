@@ -33,24 +33,23 @@
   <configSections>
     <section name="unity" type="Microsoft.Practices.Unity.Configuration.UnityConfigurationSection,Microsoft.Practices.Unity.Configuration" />
   </configSections>
-	<unity xmlns="http://schemas.microsoft.com/practces/2010/unity">
-	  <assembly name="Quick.Data" />
-	  <namespace name="Quick.Data.IService" />
-	  <namespace name="Quick.Data.Service" />
-	  <namespace name="Quick.Data.IRepository" />
-	  <namespace name="Quick.Data.Repository" />
-	  <containers>
-		<container name="defaultContainer">
-		  <!--<register type="ISysUserRepository" mapTo="SysUserRepository" />-->
-			  <register type="ISiteConfigRepository" mapTo="SiteConfigRepository" />
-				<register type="ISiteConfigService" mapTo="SiteConfigService" />	
-	<#
-	var entity = new EntityClassInfo();
-	foreach(var item in entity.EntitiesList)
-	{#>
-			  <register type="I<#=item#>Repository" mapTo="<#=item#>Repository" />
-	<#}#>
-		</container>
-	  </containers>
-	</unity>
+  <unity xmlns="http://schemas.microsoft.com/practces/2010/unity">
+    <assembly name="Quick.Data" />
+    <assembly name="Quick.Services" />
+    <namespace name="Quick.Services.IService" />
+    <namespace name="Quick.Services.Service" />
+    <namespace name="Quick.Data.IRepository" />
+    <namespace name="Quick.Data.Repository" />
+    <containers>
+      <container name="defaultContainer">
+        <!--<register type="ISysUserRepository" mapTo="SysUserRepository" />-->
+        <register type="ISiteConfigRepository" mapTo="SiteConfigRepository" />
+        <register type="ISiteConfigService" mapTo="SiteConfigService" />
+		  <register type="ISiteConfigService" mapTo="SiteConfigService" />	
+<#var entity = new EntityClassInfo(); foreach(var item in entity.EntitiesList) { #>
+		  <register type="I<#=item#>Service" mapTo="<#=item#>Service" />
+<#}#>
+      </container>
+    </containers>
+  </unity>
 </configuration>

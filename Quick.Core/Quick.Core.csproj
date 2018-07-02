@@ -121,6 +121,10 @@
       <Project>{570297CE-3909-4667-9899-2582787E6108}</Project>
       <Name>Quick.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Quick.Services\Quick.Services.csproj">
+      <Project>{EB4FB8E4-36B1-4E52-9630-A6C4804C1155}</Project>
+      <Name>Quick.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\unity.tt">

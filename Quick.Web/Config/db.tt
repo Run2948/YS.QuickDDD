@@ -1,0 +1,45 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)\Quick.Data\bin\Debug\Quick.Data.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Quick.Data" #>
+<#@ output extension=".config" #>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	* ==============================================================================
+	* 命名空间：Quick.Web
+	* 类 名 称：db.config
+	* 创 建 者：Qing
+	* 创建时间：2018-05-28 15:54:52
+	* CLR 版本：4.0.30319.42000
+	* 保存的文件名：db.config
+	* 文件版本：V1.0.0.0
+	*
+	* 功能描述：N/A 
+	*
+	* 修改历史：
+	*
+	*
+	* ==============================================================================
+	*         CopyRight @ 班纳工作室 2018. All rights reserved
+	* ==============================================================================
+-->
+ <connectionStrings>
+<# if(QuickDbProvider.IsSqlServer) { #>
+  <!--SQL SERVER 启用下面一行，注意数据库文件路径中使用了|DataDirectory|宏变量，该变量只在ASP.NET项目中有效-->
+  <add name="MssqlDbContext" connectionString="Data Source=.;Initial Catalog=Qucik_V1.0;User Id=sa;Password=sa1994sa;connect Timeout=30" providerName="System.Data.SqlClient" />
+  <!--<add name="MssqlDbContext" connectionString="Data Source=.;Initial Catalog=Qucik_V1.0;User Id=sa;Password=sa1994sa;AttachDBFilename=|DataDirectory|\Qucik_V1.0.mdf;connect Timeout=30" providerName="System.Data.SqlClient" />-->
+<# } else if(QuickDbProvider.IsMySql) { #>
+  <!--MySQL启用下面一行-->
+  <add name="MySqlDbContext" connectionString="Data Source=localhost;Port=3306;Initial Catalog=Qucik_V1.0;User Id=root;Password=1010;Character Set=utf8;Allow User Variables=True" providerName="MySql.Data.MySqlClient" />
+<# } else if(QuickDbProvider.IsSqlite) { #>
+  <!--Sqlite启用下面一行，在连接字符串中加入【BinaryGUID=False”】，指定GUID按照字符串存储，也就是说Model中的字段类型依然是GUID，但是数据中却存的是text。-->
+  <add name="SqliteDbContext" connectionString="Data Source=Qucik_V1.0.db;BinaryGUID=False" providerName="System.Data.SQLite.EF6" />
+<# } else if(QuickDbProvider.IsNpgsql) { #>
+  <!-- Npgsql启用下面一行 -->
+  <add name="NpgsqlDbContext" connectionString="Server=localhost;Database=Qucik_V1.0;User Id=sa;Password=sa1994sa;" providerName="Npgsql" />
+<# } #>
+ </connectionStrings>

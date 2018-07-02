@@ -28,6 +28,7 @@ using System.Threading.Tasks;
 
 namespace Quick.Data.Entities.Sys
 {
+    [Serializable]
     public class SysUser : BaseEntity
     {
         [Required]

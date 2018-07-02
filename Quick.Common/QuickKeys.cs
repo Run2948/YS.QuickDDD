@@ -34,6 +34,11 @@ namespace Quick.Common
         public const string FILE_SITE_XML_CONFING = "ConfigPath";
 
         /// <summary>
+        /// 站点数据库类型
+        /// </summary>
+        public const string QUICK_SITE_DBTYPE = "DbType";
+
+        /// <summary>
         /// 站点缓存配置
         /// </summary>
         public const string QUICK_SITE_CACHE_CONFIG = "quick_site_cache_config";

@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quick.Common", "Quick.Commo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quick.Web", "Quick.Web\Quick.Web.csproj", "{28AB3986-6C79-49BD-860F-B4E065619D97}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{51679B49-3631-41D0-9BC6-911E7688BD75}"
+	ProjectSection(SolutionItems) = preProject
+		mysql-connector-net-8.0.11.msi = mysql-connector-net-8.0.11.msi
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -20,6 +20,8 @@ using Microsoft.Practices.Unity.Configuration;
 using Microsoft.Practices.Unity;
 using Quick.Data.IRepository;
 using Quick.Data.Repository;
+using Quick.Services.IService;
+using Quick.Services.Service;
 using System.Configuration;
 using System;
 
@@ -77,6 +79,8 @@ namespace Quick.Core
             else
             {
                 //container.RegisterType<ISysUserRepository, SysUserRepository>();
+				container.RegisterType<ISiteConfigRepository, SiteConfigRepository>();
+                container.RegisterType<ISiteConfigService, SiteConfigService>();
 				container.RegisterType<ISysUserRepository, SysUserRepository>();
             }
         }
