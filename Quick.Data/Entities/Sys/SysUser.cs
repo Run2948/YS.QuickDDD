@@ -33,7 +33,7 @@ namespace Quick.Data.Entities.Sys
     {
         [Required]
         [Display(Name ="用户名")]
-        [MinLength(5,ErrorMessage = "用户名最小长度不能低于6位")]
+        //[MinLength(5,ErrorMessage = "用户名最小长度不能低于5位")]
         [MaxLength(16, ErrorMessage = "账户名最大长度不能超过16位")]
         public string UserName { get; set; }
 

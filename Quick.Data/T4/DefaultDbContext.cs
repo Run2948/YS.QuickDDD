@@ -56,11 +56,10 @@ namespace Quick.Data
             //设置的表的名称是一个多元化的实体类型名称版本
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             //配置实体和数据表的关系
-            //modelBuilder.Configurations.AddFromAssembly(typeof(UserConfig).Assembly);
-            //EF 默认的schema 是dbo，但是Npgsql默认是public，这里改一下
-            if(QuickDbProvider.IsNpgsql)
+            //modelBuilder.Configurations.AddFromAssembly(typeof(UserConfig).Assembly);           
+            if (QuickDbProvider.IsNpgsql)
+                //EF 默认的schema 是dbo，但是Npgsql默认是public，这里改一下
                 modelBuilder.HasDefaultSchema("public");
-
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -13,7 +13,10 @@ namespace Quick.Core
             //初始化数据：数据库不存在时创建
             try
             {
-                Database.SetInitializer(new DataBaseInitializer());
+                if (QuickDbProvider.IsAccess || QuickDbProvider.IsSqlite)
+                    Database.SetInitializer(new DataBaseMigrate());
+                else
+                    Database.SetInitializer(new DataBaseInitializer());
             }
             catch (Exception e)
             {

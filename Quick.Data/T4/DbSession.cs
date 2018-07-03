@@ -36,7 +36,7 @@ namespace Quick.Data.Repository
 	 {
 	    public DbContext Db => DbEfContextFactory.GetCurrentDbEfContext(); //EF上下文线程内唯一
 
-        #region SysUser
+        #region SysUser 实体的仓储
 		private ISysUserRepository _sysUserRepository;
         public ISysUserRepository SysUserRepository
         {

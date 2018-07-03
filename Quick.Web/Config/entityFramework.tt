@@ -31,7 +31,7 @@
 <# if(QuickDbProvider.IsSqlServer) { #>
  <!-- SQL Server配置 Start -->
   <entityFramework>
-    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework">
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework">
       <parameters>
         <parameter value="mssqllocaldb" />
       </parameters>
@@ -41,6 +41,19 @@
     </providers>
   </entityFramework>
   <!-- SQL Server配置 End -->
+<# } else if(QuickDbProvider.IsAccess) { #>
+  <!-- Access配置 Start -->
+  <entityFramework>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework">
+      <parameters>
+        <parameter value="mssqllocaldb"/>
+      </parameters>
+    </defaultConnectionFactory>
+    <providers>
+      <provider invariantName="JetEntityFrameworkProvider" type="JetEntityFrameworkProvider.JetProviderServices, JetEntityFrameworkProvider"/>
+    </providers>
+  </entityFramework>
+  <!-- Access配置 End -->
 <# } else if(QuickDbProvider.IsMySql) { #>
   <!-- MySQL配置 Start -->
   <entityFramework codeConfigurationType="MySql.Data.Entity.MySqlEFConfiguration, MySql.Data.Entity.EF6">
@@ -53,12 +66,6 @@
       <provider invariantName="MySql.Data.MySqlClient" type="MySql.Data.MySqlClient.MySqlProviderServices, MySql.Data.Entity.EF6, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d"></provider>
     </providers>
   </entityFramework>
-  <system.data>
-    <DbProviderFactories>
-      <remove invariant="MySql.Data.MySqlClient" />
-      <add name="MySQL Data Provider" invariant="MySql.Data.MySqlClient" description=".Net Framework Data Provider for MySQL" type="MySql.Data.MySqlClient.MySqlClientFactory, MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
-    </DbProviderFactories>
-  </system.data>
   <!-- MySQL配置 End -->
 <# } else if(QuickDbProvider.IsSqlite) { #>
   <!-- Sqlite配置 Start -->
@@ -73,14 +80,6 @@
       <provider invariantName="System.Data.SQLite.EF6" type="System.Data.SQLite.EF6.SQLiteProviderServices, System.Data.SQLite.EF6" />
     </providers>
   </entityFramework>
-  <system.data>
-    <DbProviderFactories>
-      <remove invariant="System.Data.SQLite.EF6" />
-      <add name="SQLite Data Provider (Entity Framework 6)" invariant="System.Data.SQLite.EF6" description=".NET Framework Data Provider for SQLite (Entity Framework 6)" type="System.Data.SQLite.EF6.SQLiteProviderFactory, System.Data.SQLite.EF6" />
-      <remove invariant="System.Data.SQLite" />
-      <add name="SQLite Data Provider" invariant="System.Data.SQLite" description=".NET Framework Data Provider for SQLite" type="System.Data.SQLite.SQLiteFactory, System.Data.SQLite" />
-    </DbProviderFactories>
-  </system.data>
   <!-- Sqlite配置 End -->
 <# } else if(QuickDbProvider.IsNpgsql) { #>
   <!-- Npgsql配置 Start -->
@@ -90,11 +89,5 @@
       <provider invariantName="Npgsql" type="Npgsql.NpgsqlServices, Npgsql.EntityFramework" />
     </providers>
   </entityFramework>
-  <system.data>
-    <DbProviderFactories>
-      <remove invariant="Npgsql" />
-      <add name="Npgsql" invariant="Npgsql" description=".Net Framework Data Provider for Postgresql" type="Npgsql.NpgsqlFactory, Npgsql" />
-    </DbProviderFactories>
-  </system.data>
   <!-- Npgsql配置 End -->
 <# } #>

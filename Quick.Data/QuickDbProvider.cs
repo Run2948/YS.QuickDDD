@@ -33,14 +33,14 @@ namespace Quick.Data
         /// <summary>
         /// 读取数据库配置类型
         /// </summary>
-        private static readonly string DataBaseProvider = AppSettings[QuickKeys.QUICK_SITE_DBTYPE] ?? "mssql";
+        private static readonly string DataBaseProvider = AppSettings[QuickKeys.QUICK_SITE_DBTYPE] ?? "access";
 
         public static bool IsSqlServer => DataBaseProvider.ToLower() == "mssql";
         public static bool IsMySql => DataBaseProvider.ToLower() == "mysql";
         public static bool IsSqlite => DataBaseProvider.ToLower() == "sqlite";
         public static bool IsNpgsql => DataBaseProvider.ToLower() == "npgsql";
-
-        //public static bool IsOracle => DataBaseProvider.ToLower() == "oracle";
+        public static bool IsAccess => DataBaseProvider.ToLower() == "access";
+        public static bool IsOracle => DataBaseProvider.ToLower() == "oracle";
 
         public static string GetDataBaseProvider()
         {
@@ -48,7 +48,8 @@ namespace Quick.Data
             if (IsMySql) return "name=MysqlDbContext";
             if (IsSqlite) return "name=SqliteDbContext";
             if (IsNpgsql) return "name=NpgsqlDbContext";
-            //if (IsOracle) return "name=OracleDbContext";
+            if (IsAccess) return "name=AccessDbContext";
+            if (IsOracle) return "name=OracleDbContext";
             return "name=MssqlDbContext";
         }
     }

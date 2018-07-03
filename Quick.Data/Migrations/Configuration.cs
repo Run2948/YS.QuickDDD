@@ -11,7 +11,7 @@ namespace Quick.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Quick.Data.DefaultDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<Quick.Data.DefaultDbContext>
     {
         public Configuration()
         {
@@ -54,7 +54,7 @@ namespace Quick.Data.Migrations
                 },
                 new SysUser
                 {
-                    UserName = "teacher",
+                    UserName = "user",
                     Password = "123456".ToMd5(),
                     NickName = "用户代表",
                 }
