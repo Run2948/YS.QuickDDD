@@ -160,9 +160,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>system.data.config</LastGenOutput>
     </Content>
-    <Content Include="Config\db.tt">
+    <Content Include="Config\connectionStrings.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>db.config</LastGenOutput>
+      <LastGenOutput>connectionStrings.config</LastGenOutput>
     </Content>
     <Content Include="Config\entityFramework.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -224,10 +224,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DesignTime>True</DesignTime>
     </Content>
-    <Content Include="Config\db.config">
+    <Content Include="Config\connectionStrings.config">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>db.tt</DependentUpon>
+      <DependentUpon>connectionStrings.tt</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

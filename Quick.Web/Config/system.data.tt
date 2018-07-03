@@ -27,9 +27,10 @@
 	*         CopyRight @ 班纳工作室 2018. All rights reserved
 	* ==============================================================================
 -->
- <DbProviderFactories>
+<system.data>
+  <DbProviderFactories>
 <# if(QuickDbProvider.IsSqlServer) { #>
-  <!--SQL SERVER 无需配置-->
+    <!--SQL SERVER 无需配置-->
 <# } else if(QuickDbProvider.IsAccess) { #>
     <remove invariant="JetEntityFrameworkProvider"/>
     <add invariant="JetEntityFrameworkProvider" name="Jet Entity Framework Provider" description="Jet Entity Framework Provider" type="JetEntityFrameworkProvider.JetProviderFactory, JetEntityFrameworkProvider"/>
@@ -45,4 +46,5 @@
     <remove invariant="Npgsql" />
     <add name="Npgsql" invariant="Npgsql" description=".Net Framework Data Provider for Postgresql" type="Npgsql.NpgsqlFactory, Npgsql" />
 <# } #>
- </DbProviderFactories>
+  </DbProviderFactories>
+</system.data>

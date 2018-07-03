@@ -33,7 +33,7 @@ namespace Quick.Data
         /// <summary>
         /// 读取数据库配置类型
         /// </summary>
-        private static readonly string DataBaseProvider = AppSettings[QuickKeys.QUICK_SITE_DBTYPE] ?? "access";
+        private static readonly string DataBaseProvider = AppSettings[QuickKeys.QUICK_SITE_DBTYPE] ?? "mssql";
 
         public static bool IsSqlServer => DataBaseProvider.ToLower() == "mssql";
         public static bool IsMySql => DataBaseProvider.ToLower() == "mysql";

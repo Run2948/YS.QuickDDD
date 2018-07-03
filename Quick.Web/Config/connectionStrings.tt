@@ -34,13 +34,13 @@
   <!--<add name="MssqlDbContext" connectionString="Data Source=.;Initial Catalog=Qucik_V1.0;User Id=sa;Password=sa1994sa;AttachDBFilename=|DataDirectory|\Qucik_V1.0.mdf;connect Timeout=30" providerName="System.Data.SqlClient" />-->
 <# } else if(QuickDbProvider.IsAccess) { #>
   <!--Access启用下面一行-->
-  <add name="AccessDbContext" connectionString="Provider=Microsoft.ACE.OleDb.12.0;Data Source='E:\Quick_V1.0.mdb';Persist Security Info=False;" providerName="JetEntityFrameworkProvider" />
+  <add name="AccessDbContext" connectionString="Provider=Microsoft.ACE.OleDb.12.0;Data Source='C:\Quick_V1.0.mdb';Persist Security Info=False;" providerName="JetEntityFrameworkProvider" />
 <# } else if(QuickDbProvider.IsMySql) { #>
   <!--MySQL启用下面一行-->
   <add name="MySqlDbContext" connectionString="Data Source=localhost;Port=3306;Initial Catalog=Qucik_V1.0;User Id=root;Password=1010;Character Set=utf8;Allow User Variables=True" providerName="MySql.Data.MySqlClient" />
 <# } else if(QuickDbProvider.IsSqlite) { #>
   <!--Sqlite启用下面一行，在连接字符串中加入【BinaryGUID=False”】，指定GUID按照字符串存储，也就是说Model中的字段类型依然是GUID，但是数据中却存的是text。-->
-  <add name="SqliteDbContext" connectionString="Data Source='E:\Qucik_V1.0.db';BinaryGUID=False" providerName="System.Data.SQLite.EF6" />
+  <add name="SqliteDbContext" connectionString="Data Source='C:\Qucik_V1.0.db';BinaryGUID=False" providerName="System.Data.SQLite.EF6" />
 <# } else if(QuickDbProvider.IsNpgsql) { #>
   <!-- Npgsql启用下面一行 -->
   <add name="NpgsqlDbContext" connectionString="Server=localhost;Database=Qucik_V1.0;User Id=sa;Password=sa1994sa;" providerName="Npgsql" />
