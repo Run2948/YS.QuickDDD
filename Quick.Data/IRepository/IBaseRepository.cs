@@ -19,6 +19,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -61,5 +63,26 @@ namespace Quick.Data.IRepository
         bool Update(Expression<Func<T, bool>> whereExpression, Expression<Func<T, T>> doExpression);
 
         bool MultiUpdate(List<T> models);
+
+        /// <summary>        
+        /// 创建一个原始 SQL 查询，该查询将返回给定泛型类型的元素。        
+        /// </summary>        
+        /// <typeparam name="T">查询所返回对象的类型</typeparam>        
+        /// <param name="sql">SQL 查询字符串</param>        
+        /// <param name="parameters">要应用于 SQL 查询字符串的参数</param>        
+        /// <returns></returns>        
+        IQueryable<T> SqlQuery(string sql, params object[] parameters);
+
+        /// <summary>        
+        /// 创建一个原始 SQL 查询，该查询将返回给定泛型类型的分页元素。        
+        /// </summary>        
+        /// <typeparam name="T">查询所返回对象的类型</typeparam>        
+        /// <param name="sql">SQL 查询字符串</param>  
+        /// <param name="pageIndex">第几页</param>
+        /// <param name="pageSize">每页多少条</param>
+        /// <param name="out totalCount">out 总记录数</param>
+        /// <param name="parameters">要应用于 SQL 查询字符串的参数</param>        
+        /// <returns></returns>   
+        IQueryable<T> SqlPagedQuery(string sql, int pageIndex, int pageSize, out int totalCount, params object[] parameters);
     }
 }

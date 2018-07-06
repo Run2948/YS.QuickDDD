@@ -17,10 +17,13 @@
 * ==============================================================================*/
 
 
+using Quick.Data.Infrastructure;
 using Quick.Data.IRepository;
 using System;
-using System.Collections.Generic;
+using System.Collections;
+using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,13 +49,54 @@ namespace Quick.Data.Repository
 		#endregion
 
 
-		//执行sql脚本
+        /// <summary>        
+        /// 执行给定的命令        
+        /// </summary>        
+        /// <param name="sql">命令字符串</param>
+        /// <param name="parameters">要应用于命令字符串的参数</param>        
+        /// <returns>执行命令后由数据库返回的结果</returns>  
         public int ExecuteSql(string sql, object[] parameters)
         {
-            return Db.Database.ExecuteSqlCommand(sql, parameters);
+            if (parameters != null && parameters.Length > 0)
+                return Db.Database.ExecuteSqlCommand(sql, parameters);
+            return Db.Database.ExecuteSqlCommand(sql);
         }
 
-        //单元工作模式
+        /// <summary>
+        /// 创建一个原始 SQL 查询，该查询将返回DataTable类型。
+        /// </summary>
+        /// <param name="sql">SQL 查询字符串</param>
+        /// <param name="parameters">要应用于 SQL 查询字符串的参数</param>
+        /// <returns></returns>
+        public DataTable ExecuteDataTable(string sql, params object[] parameters)
+        {
+            return Db.Database.SqlQueryForDataTable(sql, parameters);
+        }
+
+		/// <summary>
+        /// 创建一个原始 SQL 查询，该查询将返回dynamic类型结果集。
+        /// 提示：可以查询视图、普通的表、存储过程、函数等，只要是SQL语句 都可以自动生成动态类!
+        /// 使用案例：
+        ///    var data = xxx.ExecuteDynamic("select * from View_Student");
+        ///    foreach(dynamic item in data)
+        ///    {
+        ///         @item.StuName
+        ///    }
+        /// </summary>
+        /// <param name="sql">SQL 查询字符串</param>
+        /// <param name="parameters">要应用于 SQL 查询字符串的参数</param>
+        /// <returns></returns>
+		public IEnumerable ExecuteDynamic(string sql, params object[] parameters)
+		{
+            return Db.Database.SqlQueryForDynamic(sql, parameters);
+        }
+
+        /// <summary>
+        /// 将整个数据库访问层的所有修改都一次性的提交回数据库
+        /// 业务逻辑层:一个业务场景,肯定会对多个表做修改,对多个表进行处理
+        /// 此方法的存在:极大的提高数据库访问层批量提交sql的性能,提高数据库的吞吐量,减少跟数据库的交互次数
+        /// </summary>
+        /// <returns></returns>
         public int SaveChanges()
         {
             return Db.SaveChanges();

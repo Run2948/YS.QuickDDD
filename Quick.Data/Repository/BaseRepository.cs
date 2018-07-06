@@ -155,5 +155,36 @@ namespace Quick.Data.Repository
         {
             return db.Set<T>().Where(whereExpression).Update(doExpression) > 0;
         }
+
+        /// <summary>        
+        /// 创建一个原始 SQL 查询，该查询将返回给定泛型类型的元素。        
+        /// </summary>        
+        /// <typeparam name="T">查询所返回对象的类型</typeparam>        
+        /// <param name="sql">SQL 查询字符串</param>        
+        /// <param name="parameters">要应用于 SQL 查询字符串的参数</param>        
+        /// <returns></returns>   
+        public IQueryable<T> SqlQuery(string sql, params object[] parameters)
+        {
+            return db.Database.SqlQuery<T>(sql, parameters).AsQueryable();
+        }
+
+        /// <summary>        
+        /// 创建一个原始 SQL 查询，该查询将返回给定泛型类型的分页元素。        
+        /// </summary>        
+        /// <typeparam name="T">查询所返回对象的类型</typeparam>        
+        /// <param name="sql">SQL 查询字符串</param>  
+        /// <param name="pageIndex">第几页</param>
+        /// <param name="pageSize">每页多少条</param>
+        /// <param name="totalCount">总记录数</param>
+        /// <param name="parameters">要应用于 SQL 查询字符串的参数</param>        
+        /// <returns></returns>   
+        public IQueryable<T> SqlPagedQuery(string sql, int pageIndex, int pageSize, out int totalCount, params object[] parameters)
+        {
+            var query = db.Database.SqlQuery<T>(sql, parameters).AsQueryable();
+            var futureCount = query.DeferredCount().FutureValue();
+            var futureQuery = query.Skip((pageIndex - 1) * pageSize).Take(pageSize).Future();
+            totalCount = futureCount.Value;
+            return futureQuery.AsQueryable();
+        }
     }
 }
