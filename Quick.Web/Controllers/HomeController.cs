@@ -16,6 +16,11 @@ namespace Quick.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            Log.Info(this, "信息");
+            Log.Debug(this, "调试");
+            Log.Error(this, "错误");
+            Log.Fatal(this, "失败");
+            Log.Warn(this, "警告");
             return View();
         } 
         #endregion
@@ -24,8 +29,9 @@ namespace Quick.Web.Controllers
         // GET: Account/Logout
         public ActionResult Logout()
         {
-            Session["loginUser"] = null;
-            Session.Abandon();
+            //Session["loginUser"] = null;
+            //Session.Abandon();
+            HttpContext.GetOwinContext().Authentication.SignOut();
             return RedirectToAction("Login", "Account");
         }
         #endregion

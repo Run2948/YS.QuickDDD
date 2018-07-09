@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Quick.Common;
 using Quick.Data;
 
 namespace Quick.Core
@@ -20,10 +21,10 @@ namespace Quick.Core
             }
             catch (Exception e)
             {
-                QuickLog.Error(typeof(DataBaseInitializer), e.Message);
+                Log.Error(typeof(DataBaseInitializer), e.Message);
                 throw e;
             }
-            QuickLog.LogInfo($"{DateTime.Now}-start");
+            Log.Info(typeof(DataBaseInitializer),$"{DateTime.Now}-start");
         }
     }
 }

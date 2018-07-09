@@ -89,6 +89,8 @@
     <Compile Include="DataConfig.cs" />
     <Compile Include="Domain\Dto\UserDto.cs" />
     <Compile Include="Domain\Common\ResultInfo.cs" />
+    <Compile Include="Exceptions\ExceptionExtensions.cs" />
+    <Compile Include="Exceptions\TipInfoException.cs" />
     <Compile Include="MapperConfig.cs" />
     <Compile Include="QuickLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,19 +106,20 @@
       <LastGenOutput>UnityConfig.cs</LastGenOutput>
     </Content>
     <None Include="app.config" />
-    <None Include="Config\log4net.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Content Include="Config\site.config" />
+    <None Include="Config\log4net.config" />
+    <None Include="Config\site.config" />
     <None Include="packages.config" />
     <None Include="Config\unity.config">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>unity.tt</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Quick.Common\Quick.Common.csproj">
+      <Project>{2F712E1F-F963-4523-A8D4-A9522A1E3D0D}</Project>
+      <Name>Quick.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Quick.Data\Quick.Data.csproj">
       <Project>{570297CE-3909-4667-9899-2582787E6108}</Project>
       <Name>Quick.Data</Name>

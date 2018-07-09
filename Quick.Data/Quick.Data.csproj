@@ -96,6 +96,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBaseMigrate.cs" />
+    <Compile Include="Entities\BaseLogEntity.cs" />
+    <Compile Include="Entities\Sys\SysLoginLog.cs" />
+    <Compile Include="Entities\Sys\SysVisitLog.cs" />
     <Compile Include="Infrastructure\DatabaseExtensions.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="QuickDbProvider.cs" />
