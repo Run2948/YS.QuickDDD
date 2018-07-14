@@ -39,12 +39,30 @@ namespace Quick.Data.Repository
 	 {
 	    public DbContext Db => DbEfContextFactory.GetCurrentDbEfContext(); //EF上下文线程内唯一
 
+        #region SysLoginLog 实体的仓储
+		private ISysLoginLogRepository _sysLoginLogRepository;
+        public ISysLoginLogRepository SysLoginLogRepository
+        {
+			get => _sysLoginLogRepository ?? (_sysLoginLogRepository = new SysLoginLogRepository());
+            set => _sysLoginLogRepository = value;
+        }
+		#endregion
+
         #region SysUser 实体的仓储
 		private ISysUserRepository _sysUserRepository;
         public ISysUserRepository SysUserRepository
         {
 			get => _sysUserRepository ?? (_sysUserRepository = new SysUserRepository());
             set => _sysUserRepository = value;
+        }
+		#endregion
+
+        #region SysVisitLog 实体的仓储
+		private ISysVisitLogRepository _sysVisitLogRepository;
+        public ISysVisitLogRepository SysVisitLogRepository
+        {
+			get => _sysVisitLogRepository ?? (_sysVisitLogRepository = new SysVisitLogRepository());
+            set => _sysVisitLogRepository = value;
         }
 		#endregion
 

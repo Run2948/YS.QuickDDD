@@ -28,9 +28,25 @@ using Quick.Data.Entities.Sys;
 namespace Quick.Data.Repository
 {
     /// <summary>
+    /// SysLoginLog数据库访问类
+    /// </summary>
+	public partial class SysLoginLogRepository : BaseRepository<SysLoginLog>, ISysLoginLogRepository
+	{
+		
+	}
+
+    /// <summary>
     /// SysUser数据库访问类
     /// </summary>
 	public partial class SysUserRepository : BaseRepository<SysUser>, ISysUserRepository
+	{
+		
+	}
+
+    /// <summary>
+    /// SysVisitLog数据库访问类
+    /// </summary>
+	public partial class SysVisitLogRepository : BaseRepository<SysVisitLog>, ISysVisitLogRepository
 	{
 		
 	}

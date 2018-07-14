@@ -27,9 +27,25 @@ using Quick.Data.Entities.Sys;
 namespace Quick.Data.IRepository
 {
     /// <summary>
+    /// SysLoginLog数据库访问接口
+    /// </summary>
+	public partial interface ISysLoginLogRepository : IBaseRepository<SysLoginLog>
+	{
+		
+	}
+
+    /// <summary>
     /// SysUser数据库访问接口
     /// </summary>
 	public partial interface ISysUserRepository : IBaseRepository<SysUser>
+	{
+		
+	}
+
+    /// <summary>
+    /// SysVisitLog数据库访问接口
+    /// </summary>
+	public partial interface ISysVisitLogRepository : IBaseRepository<SysVisitLog>
 	{
 		
 	}

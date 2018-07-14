@@ -6,9 +6,11 @@ using Quick.Data.Entities.Sys;
 
 namespace Quick.Data.Migrations
 {
+    using Quick.Data.Infrastructure;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.IO;
     using System.Linq;
 
     public sealed class Configuration : DbMigrationsConfiguration<Quick.Data.DefaultDbContext>
@@ -41,6 +43,14 @@ namespace Quick.Data.Migrations
             if (context.User.Any())
             {
                 return;
+            }
+
+            if(QuickDbProvider.IsAccess)
+            {
+                if (File.Exists(context.Database.Connection.DataSource))
+                    File.Delete(context.Database.Connection.DataSource);
+                else
+                    File.Copy(context.Database.Connection.DataSource.DbTemplate(), context.Database.Connection.DataSource);
             }
 
             new List<SysUser>

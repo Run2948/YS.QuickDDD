@@ -21,6 +21,7 @@
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Quick.Data.Entities.Sys;
+using SQLite.CodeFirst;
 
 namespace Quick.Data
 {
@@ -38,9 +39,19 @@ namespace Quick.Data
 
 		#region DbSet
 		/// <summary>
+        /// SysLoginLog
+        /// </summary>
+        public virtual DbSet<SysLoginLog> LoginLog { get; set; }
+
+		/// <summary>
         /// SysUser
         /// </summary>
         public virtual DbSet<SysUser> User { get; set; }
+
+		/// <summary>
+        /// SysVisitLog
+        /// </summary>
+        public virtual DbSet<SysVisitLog> VisitLog { get; set; }
 
 		#endregion
 
@@ -60,6 +71,9 @@ namespace Quick.Data
             if (QuickDbProvider.IsNpgsql)
                 //EF 默认的schema 是dbo，但是Npgsql默认是public，这里改一下
                 modelBuilder.HasDefaultSchema("public");
+			//if (QuickDbProvider.IsSqlite)
+                // EF 默认的迁移策略是 CreateDatabaseIfNotExists，但是Sqlite有独特的迁移策略 SqliteCreateDatabaseIfNotExists<DefaultDbContext>(modelBuilder)，这里更改一下
+                //Database.SetInitializer(new SqliteCreateDatabaseIfNotExists<DefaultDbContext>(modelBuilder));
             base.OnModelCreating(modelBuilder);
         }
     }

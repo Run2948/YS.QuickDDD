@@ -81,7 +81,9 @@ namespace Quick.Core
                 //container.RegisterType<ISysUserRepository, SysUserRepository>();
 				container.RegisterType<ISiteConfigRepository, SiteConfigRepository>();
                 container.RegisterType<ISiteConfigService, SiteConfigService>();
+				container.RegisterType<ISysLoginLogRepository, SysLoginLogRepository>();
 				container.RegisterType<ISysUserRepository, SysUserRepository>();
+				container.RegisterType<ISysVisitLogRepository, SysVisitLogRepository>();
             }
         }
     }

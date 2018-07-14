@@ -28,9 +28,27 @@ namespace Quick.Services.IService
 {
 
     /// <summary>
+    /// SysLoginLog业务接口
+    /// </summary>
+	public partial interface ISysLoginLogService : IBaseService<SysLoginLog>
+	{
+		
+	}
+
+
+    /// <summary>
     /// SysUser业务接口
     /// </summary>
 	public partial interface ISysUserService : IBaseService<SysUser>
+	{
+		
+	}
+
+
+    /// <summary>
+    /// SysVisitLog业务接口
+    /// </summary>
+	public partial interface ISysVisitLogService : IBaseService<SysVisitLog>
 	{
 		
 	}

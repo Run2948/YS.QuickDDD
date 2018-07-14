@@ -30,7 +30,11 @@ namespace Quick.Data.IRepository
 	public interface IDbSession
 	{
 		#region IRepository 
+		ISysLoginLogRepository SysLoginLogRepository  { get; set; }
+
 		ISysUserRepository SysUserRepository  { get; set; }
+
+		ISysVisitLogRepository SysVisitLogRepository  { get; set; }
 
 	    #endregion
 

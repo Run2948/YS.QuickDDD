@@ -27,11 +27,27 @@ using Quick.Services.IService;
 
 namespace Quick.Services.Service
 {
+	public partial class SysLoginLogService : BaseService<SysLoginLog>, ISysLoginLogService
+	{
+		public override void SetCurrentRepository()
+        {
+            this.CurrentRepository = this.CurrentDbSession.SysLoginLogRepository; // 这里的this是表示,这个是从基类里面集成来的
+        }
+	}
+
 	public partial class SysUserService : BaseService<SysUser>, ISysUserService
 	{
 		public override void SetCurrentRepository()
         {
             this.CurrentRepository = this.CurrentDbSession.SysUserRepository; // 这里的this是表示,这个是从基类里面集成来的
+        }
+	}
+
+	public partial class SysVisitLogService : BaseService<SysVisitLog>, ISysVisitLogService
+	{
+		public override void SetCurrentRepository()
+        {
+            this.CurrentRepository = this.CurrentDbSession.SysVisitLogRepository; // 这里的this是表示,这个是从基类里面集成来的
         }
 	}
 

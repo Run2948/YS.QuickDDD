@@ -32,7 +32,13 @@ namespace Quick.Web.Controllers
         protected ISiteConfigService ConfigService { get; set; }
 
 		[Dependency]
+        protected ISysLoginLogService LoginLogService { get; set; }
+
+		[Dependency]
         protected ISysUserService UserService { get; set; }
+
+		[Dependency]
+        protected ISysVisitLogService VisitLogService { get; set; }
 
 
     }

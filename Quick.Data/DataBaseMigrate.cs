@@ -21,15 +21,26 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Quick.Data.Infrastructure;
 using Quick.Data.Migrations;
 
 namespace Quick.Data
 {
     public sealed class DataBaseMigrate: MigrateDatabaseToLatestVersion<DefaultDbContext,Configuration>
     {
-
+        public DataBaseMigrate()
+        {
+            using (DefaultDbContext db = new DefaultDbContext())
+            {
+                if (File.Exists(db.Database.Connection.DataSource))
+                    File.Delete(db.Database.Connection.DataSource);
+                else
+                    File.Copy(db.Database.Connection.DataSource.DbTemplate(), db.Database.Connection.DataSource);
+            }
+        }
     }
 }
