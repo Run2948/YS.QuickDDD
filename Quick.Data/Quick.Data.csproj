@@ -156,6 +156,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Config\Quick_V1.0.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\Quick_V1.0.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="T4\DbSession.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DbSession.cs</LastGenOutput>

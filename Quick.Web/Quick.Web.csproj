@@ -187,12 +187,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Startup.cs" />
-    <Content Include="Config\Quick_V1.0.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Config\Quick_V1.0.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Config\Quick_V1.0.accdb" />
+    <Content Include="Config\Quick_V1.0.mdb" />
     <Content Include="Config\system.data.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>system.data.config</LastGenOutput>

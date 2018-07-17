@@ -45,14 +45,6 @@ namespace Quick.Data.Migrations
                 return;
             }
 
-            if(QuickDbProvider.IsAccess)
-            {
-                if (File.Exists(context.Database.Connection.DataSource))
-                    File.Delete(context.Database.Connection.DataSource);
-                else
-                    File.Copy(context.Database.Connection.DataSource.DbTemplate(), context.Database.Connection.DataSource);
-            }
-
             new List<SysUser>
             {
                 new SysUser

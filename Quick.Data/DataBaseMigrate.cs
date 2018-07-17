@@ -34,12 +34,18 @@ namespace Quick.Data
     {
         public DataBaseMigrate()
         {
-            using (DefaultDbContext db = new DefaultDbContext())
+            if (QuickDbProvider.IsAccess)
             {
-                if (File.Exists(db.Database.Connection.DataSource))
-                    File.Delete(db.Database.Connection.DataSource);
-                else
-                    File.Copy(db.Database.Connection.DataSource.DbTemplate(), db.Database.Connection.DataSource);
+                using (DefaultDbContext db = new DefaultDbContext())
+                {
+                    //if (File.Exists(db.Database.Connection.DataSource))
+                    //    File.Delete(db.Database.Connection.DataSource);
+                    //else
+                    //    File.Copy(db.Database.Connection.DataSource.DbTemplate(), db.Database.Connection.DataSource);
+
+                    if (!File.Exists(db.Database.Connection.DataSource))
+                        File.Copy(db.Database.Connection.DataSource.DbTemplate(), db.Database.Connection.DataSource);
+                }
             }
         }
     }
