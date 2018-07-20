@@ -1,14 +1,20 @@
-﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ include file="../MultipleOutputHelper.ttinclude" #>
+<#@ import namespace="System"#>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(SolutionDir)\Quick.Data\bin\Debug\Quick.Data.dll" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
-<#@ import namespace="System.Reflection" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="Quick.Data" #>
-<#@ import namespace="Quick.Data.Entities.Sys" #>
-<#@ import namespace="Quick.Data.Infrastructure" #>
 <#@ output extension=".cs" #>
+<#
+	string solutionsPath = Host.ResolveAssemblyReference("$(SolutionDir)");  
+    string projectPath = Host.ResolveAssemblyReference("$(ProjectDir)");  
+	var path = projectPath+@"\Entities\Sys";
+    var files = System.IO.Directory.GetFiles(path, "*.cs");
+
+    var manager = Manager.Create(Host, GenerationEnvironment);
+	manager.StartNewFile("DefaultDbContext.cs", string.Empty);
+#>
 /* ==============================================================================
 * 命名空间：Quick.Data.IRepository
 * 类 名 称：IDbSession
@@ -42,9 +48,11 @@ namespace Quick.Data.IRepository
 	{
 		#region IRepository 
 <#
-var entity = new EntityClassInfo();
-foreach(var item in entity.EntitiesList)
-{#>
+	foreach (var filePath in files)
+    {
+		var file = new FileInfo(filePath);
+		var item = file.Name.Replace(".cs",string.Empty);
+#>
 		I<#=item#>Repository <#=item#>Repository  { get; set; }
 
 <#}#>

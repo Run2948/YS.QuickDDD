@@ -41,17 +41,17 @@ namespace Quick.Data
 		/// <summary>
         /// SysLoginLog
         /// </summary>
-        public virtual DbSet<SysLoginLog> LoginLog { get; set; }
+        public virtual DbSet<SysLoginLog> SysLoginLog { get; set; }
 
 		/// <summary>
         /// SysUser
         /// </summary>
-        public virtual DbSet<SysUser> User { get; set; }
+        public virtual DbSet<SysUser> SysUser { get; set; }
 
 		/// <summary>
         /// SysVisitLog
         /// </summary>
-        public virtual DbSet<SysVisitLog> VisitLog { get; set; }
+        public virtual DbSet<SysVisitLog> SysVisitLog { get; set; }
 
 		#endregion
 

@@ -16,7 +16,6 @@
 *         CopyRight @ 班纳工作室 2018. All rights reserved
 * ==============================================================================*/
 
-
 using Quick.Data.Infrastructure;
 using Quick.Data.IRepository;
 using System;
@@ -27,6 +26,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Quick.Data.Repository
 {

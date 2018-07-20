@@ -1,4 +1,4 @@
-﻿<#@ template language="C#" debug="true" hostspecific="True"#> 
+﻿<#@ template language="C#" debug="true" hostspecific="true"#> 
 <#@ include file="../MultipleOutputHelper.ttinclude" #>
 <#@ import namespace="System"#>
 
@@ -60,7 +60,7 @@ namespace Quick.Data
 		/// <summary>
         /// <#=name#>
         /// </summary>
-        public virtual DbSet<<#=name#>> <#=name.Replace("Sys",string.Empty)#> { get; set; }
+        public virtual DbSet<<#=name#>> <#=name.Replace("lbk_",string.Empty)#> { get; set; }
 
 <#
 	}
