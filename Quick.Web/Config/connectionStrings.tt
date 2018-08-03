@@ -33,7 +33,7 @@
   <add name="MssqlDbContext" connectionString="Data Source=.;Initial Catalog=Qucik_V1.0;User Id=sa;Password=sa1994sa;connect Timeout=30" providerName="System.Data.SqlClient" />
   <!--<add name="MssqlDbContext" connectionString="Data Source=.;Initial Catalog=Qucik_V1.0;User Id=sa;Password=sa1994sa;AttachDBFilename=|DataDirectory|\Qucik_V1.0.mdf;connect Timeout=30" providerName="System.Data.SqlClient" />-->
 <# } else if(QuickDbProvider.IsAccess) { #>
-  <!--Access启用下面一行-->
+  <!--Access启用下面一行，可以试试使用DataDirectory目录： Provider=Microsoft.Jet.OLEDB.4.0;Data Source="|DataDirectory|\Database.mdb";Persist Security Info=True -->
   <add name="AccessDbContext" connectionString="Provider=Microsoft.ACE.OleDb.12.0;Data Source='C:\Quick_V1.0.mdb';Persist Security Info=False;" providerName="JetEntityFrameworkProvider" />
 <# } else if(QuickDbProvider.IsMySql) { #>
   <!--MySQL启用下面一行-->
