@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "通知中心";
+    Layout = "~/Areas/Admin/Views/Shared/_SignalRLayout.cshtml";
+}
+
+<link href="~/KindEditor4.1.10/themes/default/default.css" rel="stylesheet" />
+<link href="~/KindEditor4.1.10/plugins/code/prettify.css" rel="stylesheet" />
+
+<div class="contentArea">
+    <div class="Item hr clearfix">
+        <div class="current">发送站内信</div>
+    </div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">
+        <tbody>
+            <tr class="clearfix">
+                <th>内容：</th>
+                <td><textarea name="data[content]" id="content" class="input" style=" padding: 5px; width:600px; height:160px;" placeholder=""></textarea></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="commonBtnArea" style="width: 90%;">
+        <button class="btn submit">提交</button>
+    </div>
+</div>
+<script src="~/Content/common/KindEditor-4.1.10/kindeditor-min.js"></script>
+<script src="~/Content/common/KindEditor-4.1.10/plugins/code/prettify.js"></script>
+<script src="~/Content/common/KindEditor-4.1.10/lang/zh_CN.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var editor;
+        KindEditor.ready(function (K) {
+            editor = K.create('#content', {
+                //cssPath: '/Content/common/KindEditor-4.1.10/plugins/code/prettify.css',
+                uploadJson: '/Content/common/KindEditor-4.1.10/asp.net/upload_json.ashx',
+                fileManagerJson: '/Content/common/KindEditor-4.1.10/asp.net/file_manager_json.ashx',
+                allowFileManager: true,
+                afterBlur: function () { this.sync(); },//注意这里（异步提交时需要同步）
+                afterCreate: function () {
+                    var self = this;
+                    self.sync();//把富文本编辑器的内容放到  文本域里面去。
+                }
+            });
+            prettyPrint();//注意要调用该方法.
+        });
+    });
+
+
+    $("button:contains('提交')").click(function () {
+        var content = $("textarea[name='data[content]']").val();
+        if (content === "") {
+            layer.msg("发送消息内容不能为空", { icon: 0 }, 1000); return false;
+        }
+        $.ajax({
+            url: '@Url.Action("Push", "Push", new { area = "Admin" })',
+            data: { msg: content },
+            type: 'post',
+            dataType: 'json',
+            success: function (result) {
+                if (result.status === 1) {
+                    layer.msg(result.msg);
+                }
+            }
+        });
+    });
+</script>
+
