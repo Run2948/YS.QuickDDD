@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using Quick.Core.Domain;
+using Quick.Domain.Common;
 
 namespace Quick.Web.Controllers
 {

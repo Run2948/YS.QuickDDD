@@ -1,0 +1,58 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ include file="MultipleOutputHelper.ttinclude" #>
+<#@ import namespace="System"#>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+	string solutionsPath = Host.ResolveAssemblyReference("$(SolutionDir)");  
+    string projectPath = Host.ResolveAssemblyReference("$(ProjectDir)");  
+	var path = solutionsPath+@"Quick.Data\Entities\Sys";
+    var files = System.IO.Directory.GetFiles(path, "*.cs");
+#>
+/* ==============================================================================
+* 命名空间：Quick.IService
+* 类 名 称：IQuickService
+* 创 建 者：Qing
+* 创建时间：2018-05-28 15:07:43
+* CLR 版本：4.0.30319.42000
+* 保存的文件名：IQuickService
+* 文件版本：V1.0.0.0
+*
+* 功能描述：N/A 
+*
+* 修改历史：
+*
+*
+* ==============================================================================
+*         CopyRight @ 班纳工作室 2018. All rights reserved
+* ==============================================================================*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Quick.Data.Entities.Sys;
+
+namespace Quick.IService
+{
+<#
+	foreach (var filePath in files)
+    {
+		var file = new FileInfo(filePath);
+		var item = file.Name.Replace(".cs",string.Empty);
+#>
+    /// <summary>
+    /// <#=item#>业务接口
+    /// </summary>
+	public partial interface I<#=item#>Service : IBaseService<<#=item#>>
+	{
+		
+	}
+
+<#}#>
+}

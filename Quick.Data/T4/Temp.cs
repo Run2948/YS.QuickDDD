@@ -6,16 +6,20 @@ namespace Quick.Data.Repository
 	public class Temp
 	{
 		/// <summary>
-        /// SysLoginLog
+        /// Interview
         /// </summary>
-        public SysLoginLog SysLoginLog { get; set; }
+        public Interview Interview { get; set; }
+		/// <summary>
+        /// InterviewDetail
+        /// </summary>
+        public InterviewDetail InterviewDetail { get; set; }
+		/// <summary>
+        /// SystemSetting
+        /// </summary>
+        public SystemSetting SystemSetting { get; set; }
 		/// <summary>
         /// SysUser
         /// </summary>
         public SysUser SysUser { get; set; }
-		/// <summary>
-        /// SysVisitLog
-        /// </summary>
-        public SysVisitLog SysVisitLog { get; set; }
 	}
 }

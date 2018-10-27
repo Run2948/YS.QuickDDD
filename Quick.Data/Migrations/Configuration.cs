@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Data.SQLite.EF6.Migrations;
+using Masuit.Tools.Security;
 using MySql.Data.Entity;
 using Quick.Common;
 using Quick.Data.Entities.Sys;
@@ -40,27 +41,7 @@ namespace Quick.Data.Migrations
             //    );
             //
 
-            if (context.User.Any())
-            {
-                return;
-            }
-
-            new List<SysUser>
-            {
-                new SysUser
-                {
-                    UserName = "admin",
-                    Password = "123123".ToMd5(),
-                    UserType = 1,
-                    NickName = "管理员代表",
-                },
-                new SysUser
-                {
-                    UserName = "user",
-                    Password = "123456".ToMd5(),
-                    NickName = "用户代表",
-                }
-            }.ForEach(m => context.User.AddOrUpdate(o => o.UserName, m));
+            ViewAndProcedureInitializer.Init(context);
         }
     }
 }

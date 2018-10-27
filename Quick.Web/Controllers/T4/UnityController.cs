@@ -21,24 +21,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Quick.Services.IService;
-using Microsoft.Practices.Unity;
+using Quick.IService;
 
 namespace Quick.Web.Controllers
 {
     public class UnityController : BaseController
     {
-		[Dependency]
-        protected ISiteConfigService ConfigService { get; set; }
+		
+        public IInterviewService InterviewService { get; set; }
 
-		[Dependency]
-        protected ISysLoginLogService LoginLogService { get; set; }
+		
+        public IInterviewDetailService InterviewDetailService { get; set; }
 
-		[Dependency]
-        protected ISysUserService UserService { get; set; }
+		
+        public ISystemSettingService SystemSettingService { get; set; }
 
-		[Dependency]
-        protected ISysVisitLogService VisitLogService { get; set; }
+		
+        public ISysUserService SysUserService { get; set; }
 
 
     }

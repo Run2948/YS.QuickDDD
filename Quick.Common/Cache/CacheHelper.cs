@@ -7,7 +7,7 @@
 * 保存的文件名：CacheHelper
 * 文件版本：V1.0.0.0
 *
-* 功能描述：N/A 
+* 功能描述：N/A
 *
 * 修改历史：
 *
@@ -16,13 +16,8 @@
 *         CopyRight @ 班纳工作室 2018. All rights reserved
 * ==============================================================================*/
 
-
-
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections;
 using System.Web;
 using System.Web.Caching;
 
@@ -40,15 +35,17 @@ namespace Quick.Common
             //创建缓存
             HttpContext.Current.Cache.Insert(key, obj);
         }
+
         /// <summary>
         /// 移除缓存项的文件
         /// </summary>
         /// <param name="key">缓存Key</param>
         public static void Remove(string key)
         {
-            //创建缓存
+            //移除缓存
             HttpContext.Current.Cache.Remove(key);
         }
+
         /// <summary>
         /// 创建缓存项的文件依赖
         /// </summary>
@@ -85,7 +82,14 @@ namespace Quick.Common
             {
                 return null;
             }
-            return HttpContext.Current.Cache.Get(key);
+            try
+            {
+                return HttpContext.Current.Cache.Get(key);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -100,5 +104,45 @@ namespace Quick.Common
             return obj == null ? default(T) : (T)obj;
         }
 
+        /// <summary>
+        /// 获取数据缓存
+        /// </summary>
+        /// <param name="cacheKey">键</param>
+        public static object GetCache(string cacheKey)
+        {
+            System.Web.Caching.Cache objCache = HttpRuntime.Cache;
+            return objCache[cacheKey];
+        }
+
+        /// <summary>
+        /// 设置数据缓存
+        /// </summary>
+        public static void SetCache(string cacheKey, object objObject)
+        {
+            System.Web.Caching.Cache objCache = HttpRuntime.Cache;
+            objCache.Insert(cacheKey, objObject);
+        }
+
+        /// <summary>
+        /// 移除指定数据缓存
+        /// </summary>
+        public static void RemoveAllCache(string cacheKey)
+        {
+            System.Web.Caching.Cache cache = HttpRuntime.Cache;
+            cache.Remove(cacheKey);
+        }
+
+        /// <summary>
+        /// 移除全部缓存
+        /// </summary>
+        public static void RemoveAllCache()
+        {
+            System.Web.Caching.Cache cache = HttpRuntime.Cache;
+            IDictionaryEnumerator cacheEnum = cache.GetEnumerator();
+            while (cacheEnum.MoveNext())
+            {
+                cache.Remove(cacheEnum.Key.ToString());
+            }
+        }
     }
 }

@@ -28,27 +28,37 @@ using static System.Configuration.ConfigurationManager;
 
 namespace Quick.Data
 {
+    public enum DbType
+    {
+        SqlServer,
+        MySql,
+        Access,
+        Sqlite,
+        Npgsql,
+        Oracle
+    }
+
     public class QuickDbProvider
     {
         /// <summary>
-        /// 读取数据库配置类型
-        /// </summary>
-        private static readonly string DataBaseProvider = AppSettings[QuickKeys.QUICK_SITE_DBTYPE] ?? "access";
+        /// 网站数据库DbType配置：目前只支持mssql、mysql、sqlite、pngsql四种主流开发数据库的配置；因为电脑内存不够，没有安装oracle数据库
+        /// </summary>       
+        private static readonly DbType DataBaseProvider = DbType.SqlServer;
 
-        public static bool IsSqlServer => DataBaseProvider.ToLower() == "mssql";
-        public static bool IsMySql => DataBaseProvider.ToLower() == "mysql";
-        public static bool IsSqlite => DataBaseProvider.ToLower() == "sqlite";
-        public static bool IsNpgsql => DataBaseProvider.ToLower() == "npgsql";
-        public static bool IsAccess => DataBaseProvider.ToLower() == "access";
-        public static bool IsOracle => DataBaseProvider.ToLower() == "oracle";
+        public static bool IsSqlServer => DataBaseProvider == DbType.SqlServer;
+        public static bool IsMySql => DataBaseProvider == DbType.MySql;
+        public static bool IsAccess => DataBaseProvider == DbType.Access;
+        public static bool IsSqlite => DataBaseProvider == DbType.Sqlite;
+        public static bool IsNpgsql => DataBaseProvider == DbType.Npgsql;
+        public static bool IsOracle => DataBaseProvider == DbType.Oracle;
 
         public static string GetDataBaseProvider()
         {
             if (IsSqlServer) return "name=MssqlDbContext";
             if (IsMySql) return "name=MysqlDbContext";
+            if (IsAccess) return "name=AccessDbContext";
             if (IsSqlite) return "name=SqliteDbContext";
             if (IsNpgsql) return "name=NpgsqlDbContext";
-            if (IsAccess) return "name=AccessDbContext";
             if (IsOracle) return "name=OracleDbContext";
             return "name=MssqlDbContext";
         }

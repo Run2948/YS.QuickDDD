@@ -1,3 +1,5 @@
+﻿ 
+
 /* ==============================================================================
 * 命名空间：Quick.Data
 * 类 名 称：DefaultDbContext
@@ -39,19 +41,24 @@ namespace Quick.Data
 
 		#region DbSet
 		/// <summary>
-        /// SysLoginLog
+        /// Interview
         /// </summary>
-        public virtual DbSet<SysLoginLog> SysLoginLog { get; set; }
+        public virtual DbSet<Interview> Interview { get; set; }
+
+		/// <summary>
+        /// InterviewDetail
+        /// </summary>
+        public virtual DbSet<InterviewDetail> InterviewDetail { get; set; }
+
+		/// <summary>
+        /// SystemSetting
+        /// </summary>
+        public virtual DbSet<SystemSetting> SystemSetting { get; set; }
 
 		/// <summary>
         /// SysUser
         /// </summary>
         public virtual DbSet<SysUser> SysUser { get; set; }
-
-		/// <summary>
-        /// SysVisitLog
-        /// </summary>
-        public virtual DbSet<SysVisitLog> SysVisitLog { get; set; }
 
 		#endregion
 
@@ -78,5 +85,3 @@ namespace Quick.Data
         }
     }
 }
-
-

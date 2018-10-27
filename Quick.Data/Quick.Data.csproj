@@ -32,17 +32,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AngleSharp, Version=0.9.9.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\packages\AngleSharp.0.9.10\lib\net45\AngleSharp.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="JetEntityFrameworkProvider, Version=6.0.0.0, Culture=neutral, PublicKeyToken=756cf6beb8fe7b41, processorArchitecture=x86">
-      <HintPath>..\packages\JetEntityFrameworkProvider.6.1.4\lib\JetEntityFrameworkProvider.dll</HintPath>
+    <Reference Include="HtmlSanitizer, Version=3.0.0.0, Culture=neutral, PublicKeyToken=61c49a1a9e79cc28, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlSanitizer.4.0.187\lib\net45\HtmlSanitizer.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.999, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Masuit.Tools, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Masuit.Tools.2.1.1\lib\net45\Masuit.Tools.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.2.2.7\lib\net45\Mono.Security.dll</HintPath>
@@ -53,6 +62,9 @@
     <Reference Include="MySql.Data.Entity.EF6, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.Entity.6.9.12\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Npgsql, Version=2.2.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.2.2.7\lib\net45\Npgsql.dll</HintPath>
     </Reference>
@@ -61,6 +73,9 @@
     </Reference>
     <Reference Include="SQLite.CodeFirst, Version=1.5.0.22, Culture=neutral, PublicKeyToken=eb96ba0a78d831a7, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLite.CodeFirst.1.5.0.22\lib\net45\SQLite.CodeFirst.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.2.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.1.2.4\lib\net45\StackExchange.Redis.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -78,95 +93,48 @@
     <Reference Include="System.Data.SQLite.Linq, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.108.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Z.EntityFramework.Plus.BatchDelete.EF6, Version=1.7.15.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
-      <HintPath>..\packages\Z.EntityFramework.Plus.BatchDelete.EF6.1.7.15\lib\net45\Z.EntityFramework.Plus.BatchDelete.EF6.dll</HintPath>
-    </Reference>
-    <Reference Include="Z.EntityFramework.Plus.BatchUpdate.EF6, Version=1.8.0.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
-      <HintPath>..\packages\Z.EntityFramework.Plus.BatchUpdate.EF6.1.8.0\lib\net45\Z.EntityFramework.Plus.BatchUpdate.EF6.dll</HintPath>
-    </Reference>
-    <Reference Include="Z.EntityFramework.Plus.QueryDeferred.EF6, Version=1.7.11.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
-      <HintPath>..\packages\Z.EntityFramework.Plus.QueryDeferred.EF6.1.7.11\lib\net45\Z.EntityFramework.Plus.QueryDeferred.EF6.dll</HintPath>
-    </Reference>
-    <Reference Include="Z.EntityFramework.Plus.QueryFuture.EF6, Version=1.7.19.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
-      <HintPath>..\packages\Z.EntityFramework.Plus.QueryFuture.EF6.1.7.19\lib\net45\Z.EntityFramework.Plus.QueryFuture.EF6.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBaseMigrate.cs" />
-    <Compile Include="Entities\BaseLogEntity.cs" />
-    <Compile Include="Entities\Sys\SysLoginLog.cs" />
-    <Compile Include="Entities\Sys\SysVisitLog.cs" />
+    <Compile Include="Entities\GeneratedId.cs" />
+    <Compile Include="Entities\Sys\Interview.cs" />
+    <Compile Include="Entities\Sys\InterviewDetail.cs" />
+    <Compile Include="Entities\Sys\SystemSetting.cs" />
     <Compile Include="Infrastructure\AccessDbTemplate.cs" />
     <Compile Include="Infrastructure\DatabaseExtensions.cs" />
+    <Compile Include="Infrastructure\DataTableExtensions.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="QuickDbProvider.cs" />
     <Compile Include="DataBaseInitializer.cs" />
-    <Compile Include="Entities\SiteConfig.cs" />
     <Compile Include="Infrastructure\EntityClassInfo.cs" />
-    <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Sys\SysUser.cs" />
-    <Compile Include="IRepository\IBaseRepository.cs" />
-    <Compile Include="IRepository\ISiteConfigRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\BaseRepository.cs" />
-    <Compile Include="Repository\DbEfContextFactory.cs" />
-    <Compile Include="Repository\DbSessionFactory.cs" />
-    <Compile Include="Repository\SiteConfigRepository.cs" />
-    <Compile Include="T4\DbSession.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbSession.tt</DependentUpon>
-    </Compile>
     <Compile Include="T4\DefaultDbContext.cs">
-      <DependentUpon>QuickDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4\IDbSession.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IDbSession.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4\IQuickRepository.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IQuickRepository.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4\QuickDb.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuickDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4\QuickRepository.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuickRepository.tt</DependentUpon>
+      <DependentUpon>DefaultDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="T4\Temp.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Temp.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewAndProcedureInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="MultipleOutputHelper.ttinclude" />
     <None Include="packages.config" />
+    <None Include="T4\MultipleOutputHelper.ttinclude" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Config\Quick_V1.0.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Config\Quick_V1.0.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Quick.Common\Quick.Common.csproj">
@@ -175,25 +143,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="T4\DbSession.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DbSession.cs</LastGenOutput>
+    <Content Include="Config\Quick_V1.0.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="T4\IDbSession.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IDbSession.cs</LastGenOutput>
+    <Content Include="Config\Quick_V1.0.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="T4\IQuickRepository.tt">
+    <Content Include="T4\DefaultDbContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IQuickRepository.cs</LastGenOutput>
-    </Content>
-    <Content Include="T4\QuickDb.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QuickDb.cs</LastGenOutput>
-    </Content>
-    <Content Include="T4\QuickRepository.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QuickRepository.cs</LastGenOutput>
+      <LastGenOutput>DefaultDbContext.cs</LastGenOutput>
     </Content>
     <Content Include="T4\Temp.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

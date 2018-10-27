@@ -27,6 +27,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using log4net;
+using Masuit.Tools.Security;
 using Quick.Common;
 using Quick.Data.Entities.Sys;
 
@@ -46,19 +47,21 @@ namespace Quick.Data
                     new SysUser
                     {
                         UserName = "admin",
-                        Password = "123123".ToMd5(),
+                        Password = "123123".MD5Encrypt(),
                         UserType = 1,
                         NickName = "管理员代表",
                     },
                     new SysUser
                     {
                         UserName = "user",
-                        Password = "123456".ToMd5(),
+                        Password = "123456".MD5Encrypt(),
                         NickName = "用户代表",
                         CreateTime = DateTime.Now.AddMinutes(3)
                     }
-                }.ForEach(m => context.User.AddOrUpdate(o => o.UserName, m));
+                }.ForEach(m => context.SysUser.AddOrUpdate(o => o.UserName, m));
                 context.SaveChanges();
+
+                ViewAndProcedureInitializer.Init(context);
             }
             catch (DbEntityValidationException e)
             {

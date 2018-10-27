@@ -29,11 +29,11 @@ using System.Threading.Tasks;
 namespace Quick.Data.Entities.Sys
 {
     [Serializable]
-    public class SysUser : BaseEntity
+    public class SysUser : GeneratedId
     {
         [Required]
         [Display(Name ="用户名")]
-        //[MinLength(5,ErrorMessage = "用户名最小长度不能低于5位")]
+        [MinLength(5,ErrorMessage = "用户名最小长度不能低于5位")]
         [MaxLength(16, ErrorMessage = "账户名最大长度不能超过16位")]
         public string UserName { get; set; }
 
@@ -52,5 +52,9 @@ namespace Quick.Data.Entities.Sys
         [MaxLength(8)]
         [Display(Name = "真实姓名")]
         public string NickName { get; set; }
+
+        [Required]
+        [Display(Name = "创建时间")]
+        public DateTime CreateTime { get; set; }
     }
 }

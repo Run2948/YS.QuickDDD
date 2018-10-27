@@ -24,7 +24,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using log4net;
-using Microsoft.Practices.Unity;
 using Quick.Common;
 
 // 指定log4net使用的config文件来读取配置信息

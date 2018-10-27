@@ -1,14 +1,17 @@
-﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ include file="MultipleOutputHelper.ttinclude" #>
+<#@ import namespace="System"#>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(SolutionDir)\Quick.Data\bin\Debug\Quick.Data.dll" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
-<#@ import namespace="System.Reflection" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="Quick.Data" #>
-<#@ import namespace="Quick.Data.Entities.Sys" #>
-<#@ import namespace="Quick.Data.Infrastructure" #>
 <#@ output extension=".cs" #>
+<#
+	string solutionsPath = Host.ResolveAssemblyReference("$(SolutionDir)");  
+    string projectPath = Host.ResolveAssemblyReference("$(ProjectDir)");  
+	var path = solutionsPath+@"Quick.Data\Entities\Sys";
+    var files = System.IO.Directory.GetFiles(path, "*.cs");
+#>
 /* ==============================================================================
 * 命名空间：Quick.Web.Controllers
 * 类 名 称：UnityController
@@ -32,21 +35,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Quick.Services.IService;
-using Microsoft.Practices.Unity;
+using Quick.IService;
 
 namespace Quick.Web.Controllers
 {
     public class UnityController : BaseController
     {
-		[Dependency]
-        protected ISiteConfigService ConfigService { get; set; }
-
-<#var entity = new EntityClassInfo();
-foreach(var item in entity.EntitiesList)
-{#>
-		[Dependency]
-        protected I<#=item#>Service <#=item.Replace("Sys","")#>Service { get; set; }
+<#
+	foreach (var filePath in files)
+    {
+		var file = new FileInfo(filePath);
+		var item = file.Name.Replace(".cs",string.Empty);
+#>
+		
+        public I<#=item#>Service <#=item#>Service { get; set; }
 
 <#}#>
 
