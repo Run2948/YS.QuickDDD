@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Masuit.Tools.Logging;
 using Quick.Common;
 using Quick.Data;
 
@@ -21,10 +22,12 @@ namespace Quick.Core
             }
             catch (Exception e)
             {
-                Log.Error(typeof(DataBaseInitializer), e.Message);
+                LogManager.Error(typeof(DataBaseInitializer), e.Message);
+#if DEBUG
                 throw e;
+#endif            
             }
-            Log.Info(typeof(DataBaseInitializer),$"{DateTime.Now}-start");
+            LogManager.Info(typeof(DataBaseInitializer),$"{DateTime.Now}-start");
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Quick.Web
             // Mapper.Initialize()只能用1次，第2次会覆盖第1次的配置,改为下面的写法就能解决问题：
 
             var cfg = new MapperConfigurationExpression();
-            cfg.CreateMap<SysUser, UserDto>();
+            cfg.CreateMap<UserInfo, UserDto>();
             cfg.CreateMap<Interview, InterviewOutputDto>();
             //cfg.CreateMap<User, UserSession>();
             //cfg.CreateMap<Naire, NaireDto>().ForMember(dest => dest.AnswerCount, src => src.ResolveUsing(m => 0)).ForMember(dest => dest.AnswerScore, src => src.ResolveUsing(m => 0));

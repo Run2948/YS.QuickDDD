@@ -44,6 +44,14 @@ namespace Quick.Repository
 	}
 
     /// <summary>
+    /// LoginRecord数据库访问类
+    /// </summary>
+	public partial class LoginRecordRepository : BaseRepository<LoginRecord>, ILoginRecordRepository
+	{
+		
+	}
+
+    /// <summary>
     /// SystemSetting数据库访问类
     /// </summary>
 	public partial class SystemSettingRepository : BaseRepository<SystemSetting>, ISystemSettingRepository
@@ -52,9 +60,9 @@ namespace Quick.Repository
 	}
 
     /// <summary>
-    /// SysUser数据库访问类
+    /// UserInfo数据库访问类
     /// </summary>
-	public partial class SysUserRepository : BaseRepository<SysUser>, ISysUserRepository
+	public partial class UserInfoRepository : BaseRepository<UserInfo>, IUserInfoRepository
 	{
 		
 	}

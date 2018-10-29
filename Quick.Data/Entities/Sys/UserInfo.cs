@@ -25,11 +25,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Masuit.Tools.Validator;
 
 namespace Quick.Data.Entities.Sys
 {
     [Serializable]
-    public class SysUser : GeneratedId
+    public class UserInfo : BaseEntity
     {
         [Required]
         [Display(Name ="用户名")]
@@ -44,6 +45,12 @@ namespace Quick.Data.Entities.Sys
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        /// <summary>
+        /// 加密盐
+        /// </summary>
+        [Required]
+        public string SaltKey { get; set; }
+
         [Required]
         [Display(Name = "用户类型")]
         [DefaultValue(0)]
@@ -56,5 +63,28 @@ namespace Quick.Data.Entities.Sys
         [Required]
         [Display(Name = "创建时间")]
         public DateTime CreateTime { get; set; }
+
+        /// <summary>
+        /// QQ或微信
+        /// </summary>
+        public string QQorWeChat { get; set; }
+
+        /// <summary>
+        /// 邮箱
+        /// </summary>
+        [IsEmail]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// 用户头像
+        /// </summary>
+        public string Avatar { get; set; }
+
+        /// <summary>
+        /// AccessToken，接入第三方登陆时用
+        /// </summary>
+        public string AccessToken { get; set; }
+
+        public virtual ICollection<LoginRecord> LoginRecord { get; set; }
     }
 }

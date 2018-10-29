@@ -63,6 +63,9 @@ namespace Quick.Data.Entities
     [Serializable]
     public class GeneratedId
     {
+        /// <summary>
+        /// 主键
+        /// </summary>
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }

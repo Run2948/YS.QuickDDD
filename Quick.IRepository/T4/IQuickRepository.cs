@@ -43,6 +43,14 @@ namespace Quick.IRepository
 	}
 
     /// <summary>
+    /// LoginRecord数据库访问接口
+    /// </summary>
+	public partial interface ILoginRecordRepository : IBaseRepository<LoginRecord>
+	{
+		
+	}
+
+    /// <summary>
     /// SystemSetting数据库访问接口
     /// </summary>
 	public partial interface ISystemSettingRepository : IBaseRepository<SystemSetting>
@@ -51,9 +59,9 @@ namespace Quick.IRepository
 	}
 
     /// <summary>
-    /// SysUser数据库访问接口
+    /// UserInfo数据库访问接口
     /// </summary>
-	public partial interface ISysUserRepository : IBaseRepository<SysUser>
+	public partial interface IUserInfoRepository : IBaseRepository<UserInfo>
 	{
 		
 	}

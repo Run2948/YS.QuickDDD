@@ -52,6 +52,17 @@ namespace Quick.Data
         public static bool IsNpgsql => DataBaseProvider == DbType.Npgsql;
         public static bool IsOracle => DataBaseProvider == DbType.Oracle;
 
+        public static string GetProvider()
+        {
+            if (IsSqlServer) return "MssqlDbContext";
+            if (IsMySql) return "MysqlDbContext";
+            if (IsAccess) return "AccessDbContext";
+            if (IsSqlite) return "SqliteDbContext";
+            if (IsNpgsql) return "NpgsqlDbContext";
+            if (IsOracle) return "OracleDbContext";
+            return "MssqlDbContext";
+        }
+
         public static string GetDataBaseProvider()
         {
             if (IsSqlServer) return "name=MssqlDbContext";

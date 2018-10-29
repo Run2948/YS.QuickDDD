@@ -23,15 +23,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using log4net;
 using Quick.Common;
 
-// 指定log4net使用的config文件来读取配置信息
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = @"Config/log4net.config", Watch = true)]
-//[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace Quick.Core
 {
-    public class QuickLog : Log
+    public class QuickLog
     {
         #region logger to database 将日志记录到数据库
 

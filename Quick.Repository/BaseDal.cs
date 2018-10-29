@@ -49,7 +49,16 @@ namespace Quick.Repository
     /// <typeparam name="T">实体类型</typeparam>
     public class BaseDal<T> : Disposable, IBaseDal<T> where T : class, new()
     {
-        public virtual DefaultDbContext DataContext { get; set; } = WebExtension.GetDbContext<DefaultDbContext>();
+        public virtual DefaultDbContext DataContext { get; set; }// = WebExtension.GetDbContext<DefaultDbContext>();
+
+        /// <summary>
+        /// 获取数据上下文实例
+        /// </summary>
+        /// <returns></returns>
+        public DefaultDbContext GetDataContext()
+        {
+            return WebExtension.GetDbContext<DefaultDbContext>();
+        }
 
         /// <summary>
         /// 获取所有实体

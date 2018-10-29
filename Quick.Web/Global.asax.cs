@@ -13,9 +13,12 @@ using Quick.Data;
 using System.Configuration;
 using System.Threading.Tasks;
 using Masuit.Tools;
+using Masuit.Tools.Logging;
 using Masuit.Tools.Net;
 using Masuit.Tools.Win32;
 using Quick.Common;
+using Quick.Data.Entities.Sys;
+using Quick.Web.Jobs;
 
 namespace Quick.Web
 {
@@ -81,19 +84,19 @@ namespace Quick.Web
                         {
                             browserType = "Safari6-";
                         }
-                        //Interview interview = new Interview()
-                        //{
-                        //    IP = ip,
-                        //    UserAgent = ua,
-                        //    BrowserType = browserType,
-                        //    OperatingSystem = req.Browser.Platform,
-                        //    ViewTime = DateTime.Now,
-                        //    FromUrl = refer,
-                        //    HttpMethod = req.HttpMethod,
-                        //    LandPage = req.Url.ToString(),
-                        //    Uid = uid
-                        //};
-                        //HangfireHelper.CreateJob(typeof(IHangfireBackJob), nameof(HangfireBackJob.FlushInetAddress), args: interview);
+                        Interview interview = new Interview()
+                        {
+                            IP = ip,
+                            UserAgent = ua,
+                            BrowserType = browserType,
+                            OperatingSystem = req.Browser.Platform,
+                            ViewTime = DateTime.Now,
+                            FromUrl = refer,
+                            HttpMethod = req.HttpMethod,
+                            LandPage = req.Url.ToString(),
+                            Uid = uid
+                        };
+                        HangfireHelper.CreateJob(typeof(IHangfireBackJob), nameof(HangfireBackJob.FlushInetAddress), args: interview);
                     }
                 }, request);
             }
@@ -114,7 +117,7 @@ namespace Quick.Web
         {
             var lastError = Server.GetLastError().GetBaseException();
             {
-                Log.Error(typeof(MvcApplication), lastError);
+                LogManager.Error(typeof(MvcApplication), lastError);
             }
         }
     }

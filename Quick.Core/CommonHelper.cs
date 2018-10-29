@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -33,6 +34,7 @@ using System.Web;
 using EFSecondLevelCache;
 using Hangfire;
 using Masuit.Tools;
+using Masuit.Tools.Logging;
 using Masuit.Tools.Media;
 using Masuit.Tools.Net;
 using Masuit.Tools.NoSQL;
@@ -66,7 +68,7 @@ namespace Quick.Core
                 }
                 catch (IndexOutOfRangeException e)
                 {
-                    Log.Error(typeof(CommonHelper),e.Message);
+                    LogManager.Error(typeof(CommonHelper),e.Message);
                 }
             }
             IPWhiteList = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data", "whitelist.txt")).Split(',', '，');
@@ -150,6 +152,37 @@ namespace Quick.Core
         /// <param name="source"></param>
         /// <returns></returns>
         public static T Mapper<T>(this object source) where T : class => AutoMapper.Mapper.Map<T>(source);
+
+        #region 性能历史数据
+
+        public static List<object[]> HistoryCpuLoad { get; set; } = new List<object[]>();
+        public static List<object[]> HistoryMemoryUsage { get; set; } = new List<object[]>();
+        public static List<object[]> HistoryCpuTemp { get; set; } = new List<object[]>();
+        public static List<object[]> HistoryIORead { get; set; } = new List<object[]>();
+        public static List<object[]> HistoryIOWrite { get; set; } = new List<object[]>();
+        public static List<object[]> HistoryNetSend { get; set; } = new List<object[]>();
+        public static List<object[]> HistoryNetReceive { get; set; } = new List<object[]>();
+
+        #endregion
+
+        public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> left, Expression<Func<T, bool>> right, string strName)
+        {
+            var dateExpr = Expression.Parameter(typeof(T));
+            var parameterReplacer = new ParameterReplacer(dateExpr);
+            var leftWhere = parameterReplacer.Replace(left.Body);
+            var rightWhere = parameterReplacer.Replace(right.Body);
+            var body = Expression.And(leftWhere, rightWhere);
+            return Expression.Lambda<Func<T, bool>>(body, dateExpr);
+        }
+
+        public static Expression<Func<T, bool>> Or<T>(this Expression<Func<T, bool>> left, Expression<Func<T, bool>> right, string strName)
+        {
+            var dateExpr = Expression.Parameter(typeof(T));
+            var leftWhere = left.Body;
+            var rightWhere = right.Body;
+            var body = Expression.Or(leftWhere, rightWhere);
+            return Expression.Lambda<Func<T, bool>>(body, dateExpr);
+        }
 
         /// <summary>
         /// 获取AppSettings中的参数

@@ -51,14 +51,19 @@ namespace Quick.Data
         public virtual DbSet<InterviewDetail> InterviewDetail { get; set; }
 
 		/// <summary>
+        /// LoginRecord
+        /// </summary>
+        public virtual DbSet<LoginRecord> LoginRecord { get; set; }
+
+		/// <summary>
         /// SystemSetting
         /// </summary>
         public virtual DbSet<SystemSetting> SystemSetting { get; set; }
 
 		/// <summary>
-        /// SysUser
+        /// UserInfo
         /// </summary>
-        public virtual DbSet<SysUser> SysUser { get; set; }
+        public virtual DbSet<UserInfo> UserInfo { get; set; }
 
 		#endregion
 

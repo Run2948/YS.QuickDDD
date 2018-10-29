@@ -34,10 +34,13 @@ namespace Quick.Web.Controllers
         public IInterviewDetailService InterviewDetailService { get; set; }
 
 		
+        public ILoginRecordService LoginRecordService { get; set; }
+
+		
         public ISystemSettingService SystemSettingService { get; set; }
 
 		
-        public ISysUserService SysUserService { get; set; }
+        public IUserInfoService UserInfoService { get; set; }
 
 
     }

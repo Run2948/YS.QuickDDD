@@ -10,6 +10,7 @@ namespace Quick.Console.Tests
     {
         static void Main(string[] args)
         {
+            
         }
     }
 }

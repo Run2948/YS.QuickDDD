@@ -14,12 +14,16 @@ namespace Quick.Data.Repository
         /// </summary>
         public InterviewDetail InterviewDetail { get; set; }
 		/// <summary>
+        /// LoginRecord
+        /// </summary>
+        public LoginRecord LoginRecord { get; set; }
+		/// <summary>
         /// SystemSetting
         /// </summary>
         public SystemSetting SystemSetting { get; set; }
 		/// <summary>
-        /// SysUser
+        /// UserInfo
         /// </summary>
-        public SysUser SysUser { get; set; }
+        public UserInfo UserInfo { get; set; }
 	}
 }

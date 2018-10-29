@@ -16,11 +16,11 @@ namespace Quick.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            Log.Info(this, "信息");
-            Log.Debug(this, "调试");
-            Log.Error(this, "错误");
-            Log.Fatal(this, "失败");
-            Log.Warn(this, "警告");
+            Log4Net.Info(this, "信息");
+            Log4Net.Debug(this, "调试");
+            Log4Net.Error(this, "错误");
+            Log4Net.Fatal(this, "失败");
+            Log4Net.Warn(this, "警告");
             return View();
         } 
         #endregion

@@ -103,9 +103,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBaseMigrate.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Enum\LoginType.cs" />
+    <Compile Include="Entities\Enum\Status.cs" />
     <Compile Include="Entities\GeneratedId.cs" />
     <Compile Include="Entities\Sys\Interview.cs" />
     <Compile Include="Entities\Sys\InterviewDetail.cs" />
+    <Compile Include="Entities\Sys\LoginRecord.cs" />
     <Compile Include="Entities\Sys\SystemSetting.cs" />
     <Compile Include="Infrastructure\AccessDbTemplate.cs" />
     <Compile Include="Infrastructure\DatabaseExtensions.cs" />
@@ -114,7 +118,7 @@
     <Compile Include="QuickDbProvider.cs" />
     <Compile Include="DataBaseInitializer.cs" />
     <Compile Include="Infrastructure\EntityClassInfo.cs" />
-    <Compile Include="Entities\Sys\SysUser.cs" />
+    <Compile Include="Entities\Sys\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="T4\DefaultDbContext.cs">
       <AutoGen>True</AutoGen>

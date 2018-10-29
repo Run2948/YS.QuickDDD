@@ -43,6 +43,14 @@ namespace Quick.IService
 	}
 
     /// <summary>
+    /// LoginRecord业务接口
+    /// </summary>
+	public partial interface ILoginRecordService : IBaseService<LoginRecord>
+	{
+		
+	}
+
+    /// <summary>
     /// SystemSetting业务接口
     /// </summary>
 	public partial interface ISystemSettingService : IBaseService<SystemSetting>
@@ -51,9 +59,9 @@ namespace Quick.IService
 	}
 
     /// <summary>
-    /// SysUser业务接口
+    /// UserInfo业务接口
     /// </summary>
-	public partial interface ISysUserService : IBaseService<SysUser>
+	public partial interface IUserInfoService : IBaseService<UserInfo>
 	{
 		
 	}

@@ -45,6 +45,14 @@ namespace Quick.Service
 	}
 
     /// <summary>
+    /// LoginRecord业务类
+    /// </summary>
+	public partial class LoginRecordService : BaseService<LoginRecord>, ILoginRecordService
+	{
+		
+	}
+
+    /// <summary>
     /// SystemSetting业务类
     /// </summary>
 	public partial class SystemSettingService : BaseService<SystemSetting>, ISystemSettingService
@@ -53,9 +61,9 @@ namespace Quick.Service
 	}
 
     /// <summary>
-    /// SysUser业务类
+    /// UserInfo业务类
     /// </summary>
-	public partial class SysUserService : BaseService<SysUser>, ISysUserService
+	public partial class UserInfoService : BaseService<UserInfo>, IUserInfoService
 	{
 		
 	}

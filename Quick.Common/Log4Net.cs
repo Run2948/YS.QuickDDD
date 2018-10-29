@@ -1,10 +1,10 @@
 ﻿/* ==============================================================================
 * 命名空间：Quick.Common
-* 类 名 称：Log
+* 类 名 称：Log4Net
 * 创 建 者：Qing
 * 创建时间：2018-07-09 11:53:00
 * CLR 版本：4.0.30319.42000
-* 保存的文件名：Log
+* 保存的文件名：Log4Net
 * 文件版本：V1.0.0.0
 *
 * 功能描述：N/A 
@@ -31,7 +31,7 @@ using System.Threading.Tasks;
 //[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace Quick.Common
 {
-    public class Log
+    public class Log4Net
     {
         #region logger name="" 单独配置时使用方法
 

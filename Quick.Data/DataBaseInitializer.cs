@@ -42,23 +42,23 @@ namespace Quick.Data
         {
             try
             {
-                new List<SysUser>
+                new List<UserInfo>
                 {
-                    new SysUser
+                    new UserInfo
                     {
                         UserName = "admin",
                         Password = "123123".MD5Encrypt(),
                         UserType = 1,
                         NickName = "管理员代表",
                     },
-                    new SysUser
+                    new UserInfo
                     {
                         UserName = "user",
                         Password = "123456".MD5Encrypt(),
                         NickName = "用户代表",
                         CreateTime = DateTime.Now.AddMinutes(3)
                     }
-                }.ForEach(m => context.SysUser.AddOrUpdate(o => o.UserName, m));
+                }.ForEach(m => context.UserInfo.AddOrUpdate(o => o.UserName, m));
                 context.SaveChanges();
 
                 ViewAndProcedureInitializer.Init(context);

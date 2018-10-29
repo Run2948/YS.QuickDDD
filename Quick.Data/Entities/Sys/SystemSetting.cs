@@ -32,7 +32,7 @@ namespace Quick.Data.Entities.Sys
     /// 系统设置
     /// </summary>
     [Table("SystemSetting")]
-    public class SystemSetting: GeneratedId
+    public class SystemSetting: BaseEntity
     {
         /// <summary>
         /// 参数项名

@@ -132,6 +132,7 @@
     <Compile Include="Filters\JsonNetFilter.cs" />
     <Compile Include="HangfireHelper.cs" />
     <Compile Include="JsonHelper.cs" />
+    <Compile Include="ParameterReplacer.cs" />
     <Compile Include="QuickLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ServiceManager.cs" />
