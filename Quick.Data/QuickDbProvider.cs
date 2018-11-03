@@ -24,35 +24,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Quick.Common;
+using SqlSugar;
 using static System.Configuration.ConfigurationManager;
 
 namespace Quick.Data
 {
-    public enum DbType
-    {
-        SqlServer,
-        MySql,
-        Access,
-        Sqlite,
-        Npgsql,
-        Oracle
-    }
-
     public class QuickDbProvider
     {
         /// <summary>
         /// 网站数据库DbType配置：目前只支持mssql、mysql、sqlite、pngsql四种主流开发数据库的配置；因为电脑内存不够，没有安装oracle数据库
-        /// </summary>       
-        private static readonly DbType DataBaseProvider = DbType.SqlServer;
+        /// </summary>
+        private static readonly string DataBaseProvider = AppSettings[QuickKeys.QUICK_SITE_DBTYPE] ?? "mssql";
+        public static bool IsSqlServer => DataBaseProvider.ToLower() == "mssql";
+        public static bool IsMySql => DataBaseProvider.ToLower() == "mysql";
+        public static bool IsSqlite => DataBaseProvider.ToLower() == "sqlite";
+        public static bool IsNpgsql => DataBaseProvider.ToLower() == "npgsql";
+        public static bool IsOracle => DataBaseProvider.ToLower() == "oracle";
+        public static bool IsAccess => DataBaseProvider.ToLower() == "access";
 
-        public static bool IsSqlServer => DataBaseProvider == DbType.SqlServer;
-        public static bool IsMySql => DataBaseProvider == DbType.MySql;
-        public static bool IsAccess => DataBaseProvider == DbType.Access;
-        public static bool IsSqlite => DataBaseProvider == DbType.Sqlite;
-        public static bool IsNpgsql => DataBaseProvider == DbType.Npgsql;
-        public static bool IsOracle => DataBaseProvider == DbType.Oracle;
-
-        public static string GetProvider()
+        /// <summary>
+        /// 获取链接字符串名称
+        /// </summary>
+        /// <returns></returns>
+        public static string GetProviderName()
         {
             if (IsSqlServer) return "MssqlDbContext";
             if (IsMySql) return "MysqlDbContext";
@@ -63,15 +57,39 @@ namespace Quick.Data
             return "MssqlDbContext";
         }
 
+        /// <summary>
+        /// 获取DbContext链接字符串,例如：
+        ///   public DefaultDbContext()
+        ///    :base(QuickDbProvider.GetDataBaseProvider())
+        /// </summary>
+        /// <returns></returns>
         public static string GetDataBaseProvider()
+        {          
+            return $"name={GetProviderName()}";
+        }
+
+        /// <summary>
+        /// 获取数据库类型
+        /// </summary>
+        /// <returns>DbType</returns>
+        public static DbType GetDbType()
         {
-            if (IsSqlServer) return "name=MssqlDbContext";
-            if (IsMySql) return "name=MysqlDbContext";
-            if (IsAccess) return "name=AccessDbContext";
-            if (IsSqlite) return "name=SqliteDbContext";
-            if (IsNpgsql) return "name=NpgsqlDbContext";
-            if (IsOracle) return "name=OracleDbContext";
-            return "name=MssqlDbContext";
+            if (IsSqlServer) return DbType.SqlServer;
+            if (IsMySql) return DbType.MySql;
+            if (IsSqlite) return DbType.Sqlite;
+            if (IsNpgsql) return DbType.PostgreSQL;
+            if (IsAccess) throw new NotSupportedException("非常抱歉，SqlSugar 暂不支持 Access 数据库操作");
+            if (IsOracle) return DbType.Oracle;
+            return DbType.SqlServer;
+        }
+
+        /// <summary>
+        /// 获取连接字符串
+        /// </summary>
+        /// <returns>string</returns>
+        public static string GetDbConStr()
+        {
+            return ConnectionStrings[GetProviderName()].ConnectionString;
         }
     }
 }

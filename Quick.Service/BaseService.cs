@@ -22,12 +22,66 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
+using Quick.Data;
 using Quick.IService;
+using SqlSugar;
 
 namespace Quick.Service
 {
     public class BaseService<T> : BaseBll<T>, IBaseService<T> where T : class, new()
     {
+        #region SqlSugar 初始化
+        /// <summary>
+        /// 初始化ConnectionConfig对象
+        /// </summary>
+        private ConnectionConfig SqlSugarConnectionConfig => new ConnectionConfig()
+        {
+            ConnectionString = QuickDbProvider.GetDbConStr(),
+            DbType = QuickDbProvider.GetDbType(),
+            InitKeyType = InitKeyType.Attribute,//从特性读取主键和自增列信息
+            IsAutoCloseConnection = true,//开启自动释放模式和EF原理一样我就不多解释了
+        };
+
+        public BaseService()
+        {
+            DbClient = new SqlSugarClient(SqlSugarConnectionConfig);
+#if DEBUG
+            //调式代码 用来打印SQL 
+            DbClient.Aop.OnLogExecuting = (sql, pars) =>
+            {
+                Console.WriteLine(sql + "\r\n" + DbClient.Utilities.SerializeObject(pars.ToDictionary(it => it.ParameterName, it => it.Value)));
+                Console.WriteLine();
+            };
+#endif
+        }
+        #endregion
+
+        #region SqlSugar 操作
+
+        // 用来处理lbk_user表的常用操作
+        //public SimpleClient<lbk_user> StudentDb => new SimpleClient<lbk_user>(DbClient);
+
+        /// <summary>
+        /// 用来处理T表的常用操作
+        /// </summary>
+        public SimpleClient<T> SimpleDbClient => new SimpleClient<T>(DbClient);
+
+        /// <summary>
+        /// 用来处理事务多表查询和复杂的操作
+        /// </summary>
+        public SqlSugarClient DbClient;
+
+        /// <summary>
+        /// SqlSugar 用来处理事务多表查询和复杂的操作
+        /// 详细操作见：http://www.codeisbug.com/Doc/8/1166
+        /// </summary>
+        /// <returns></returns>
+        public SqlSugarClient SugarClient()
+        {
+            return DbClient;
+        } 
+        #endregion
+
         /// <summary>
         /// 批量删除实体
         /// </summary>

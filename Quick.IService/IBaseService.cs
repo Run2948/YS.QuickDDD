@@ -24,11 +24,24 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using SqlSugar;
 
 namespace Quick.IService
 {
     public interface IBaseService<T> : IBaseBll<T> where T : class, new()
     {
+
+        #region SqlSugar 操作
+
+        /// <summary>
+        /// SqlSugar 用来处理事务多表查询和复杂的操作
+        /// 详细操作见：http://www.codeisbug.com/Doc/8/1166
+        /// </summary>
+        /// <returns></returns>
+        SqlSugarClient SugarClient(); 
+
+        #endregion
+
         /// <summary>
         /// 批量删除实体
         /// </summary>

@@ -17,7 +17,7 @@ namespace Quick.Web
             #region Hangfire配置
 
             //GlobalConfiguration.Configuration.UseMemoryStorage();
-            GlobalConfiguration.Configuration.UseSqlServerStorage(ConfigurationManager.ConnectionStrings[QuickDbProvider.GetProvider()].ConnectionString).UseConsole();
+            GlobalConfiguration.Configuration.UseSqlServerStorage(ConfigurationManager.ConnectionStrings[QuickDbProvider.GetProviderName()].ConnectionString).UseConsole();
 
             #region 实现类注册
 
