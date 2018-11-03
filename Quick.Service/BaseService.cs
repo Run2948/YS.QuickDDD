@@ -74,6 +74,11 @@ namespace Quick.Service
         /// <summary>
         /// SqlSugar 用来处理事务多表查询和复杂的操作
         /// 详细操作见：http://www.codeisbug.com/Doc/8/1166
+        ///   连表分页查询使用案例：
+        ///   int totalCount = 0;
+        ///   var list = db.Queryable<lbk_company, lbk_store>((st, sc) => new object[] {
+        ///        JoinType.Inner,st.member_id == sc.member_id
+        ///    }).Select<lbk_store_company_view>().ToPageList(1, 10, ref totalCount);
         /// </summary>
         /// <returns></returns>
         public SqlSugarClient SugarClient()
