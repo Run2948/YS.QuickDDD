@@ -8,8 +8,12 @@
 * 4.AutoMapper
 * 5.log4net
 * 6.SignalR
-* 7.Redis
+* 7.StackExchange.Redis
 * 8.Hangfire
+* 9.FluentScheduler
+* 10.System.ValueTuple
+* 11.sqlSugar
+* 12.PaySharp
 
 #### CodeFirst 生成数据库
 * 第一步： 在控制台中输入Enable-Migrations(启动迁移)。注意：默认项目一定要是模型所在的项目。

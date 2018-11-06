@@ -65,6 +65,9 @@
     <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.1.3\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.2.0.4\lib\net45\CommonServiceLocator.dll</HintPath>
     </Reference>
@@ -146,6 +149,24 @@
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PaySharp.Alipay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=6abe00b5d6f7277f, processorArchitecture=MSIL">
+      <HintPath>..\packages\PaySharp.Alipay.1.0.3\lib\net45\PaySharp.Alipay.dll</HintPath>
+    </Reference>
+    <Reference Include="PaySharp.Core, Version=1.0.6.0, Culture=neutral, PublicKeyToken=6abe00b5d6f7277f, processorArchitecture=MSIL">
+      <HintPath>..\packages\PaySharp.Core.1.0.6\lib\net45\PaySharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="PaySharp.Core.Mvc, Version=1.0.1.0, Culture=neutral, PublicKeyToken=6abe00b5d6f7277f, processorArchitecture=MSIL">
+      <HintPath>..\packages\PaySharp.Core.Mvc.1.0.1\lib\net45\PaySharp.Core.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="PaySharp.Qpay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=6abe00b5d6f7277f, processorArchitecture=MSIL">
+      <HintPath>..\packages\PaySharp.Qpay.1.0.3\lib\net45\PaySharp.Qpay.dll</HintPath>
+    </Reference>
+    <Reference Include="PaySharp.Unionpay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=6abe00b5d6f7277f, processorArchitecture=MSIL">
+      <HintPath>..\packages\PaySharp.Unionpay.1.0.3\lib\net45\PaySharp.Unionpay.dll</HintPath>
+    </Reference>
+    <Reference Include="PaySharp.Wechatpay, Version=1.0.3.0, Culture=neutral, PublicKeyToken=6abe00b5d6f7277f, processorArchitecture=MSIL">
+      <HintPath>..\packages\PaySharp.Wechatpay.1.0.3\lib\net45\PaySharp.Wechatpay.dll</HintPath>
     </Reference>
     <Reference Include="SqlSugar, Version=4.8.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\sqlSugar.4.8.1\lib\SqlSugar.dll</HintPath>
@@ -235,6 +256,11 @@
     <Compile Include="App_Start\StartupConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\PushController.cs" />
+    <Compile Include="Controllers\Business\AlipayController.cs" />
+    <Compile Include="Controllers\Business\NotifyController.cs" />
+    <Compile Include="Controllers\Business\QpayController.cs" />
+    <Compile Include="Controllers\Business\UnionpayController.cs" />
+    <Compile Include="Controllers\Business\WechatpayController.cs" />
     <Compile Include="Controllers\ReceiveController.cs" />
     <Compile Include="Hubs\PushHub.cs" />
     <Compile Include="Jobs\HangfireBackJob.cs" />
@@ -247,6 +273,8 @@
     <Content Include="App_Data\DenyIPRange.txt" />
     <Content Include="App_Data\mod.txt" />
     <Content Include="App_Data\whitelist.txt" />
+    <Content Include="Certs\1900000109_532398_new.pfx" />
+    <Content Include="Certs\acp_test_sign.pfx" />
     <Content Include="Config\system.data.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>system.data.config</LastGenOutput>
@@ -639,6 +667,11 @@
     <Content Include="Content\common\layer-v3.0.3\layer\skin\default\loading-0.gif" />
     <Content Include="Content\common\layer-v3.0.3\layer\skin\default\loading-1.gif" />
     <Content Include="Content\common\layer-v3.0.3\layer\skin\default\loading-2.gif" />
+    <Content Include="Content\pay\demo.css" />
+    <Content Include="Content\pay\demo.js" />
+    <Content Include="Content\pay\jquery-ui.min.css" />
+    <Content Include="Content\pay\jquery-ui.min.js" />
+    <Content Include="Content\pay\jquery.min.js" />
     <Content Include="Controllers\T4\UnityController.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UnityController.cs</LastGenOutput>
@@ -687,6 +720,7 @@
     <Content Include="Areas\Admin\Views\Shared\_SignalRLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Push\Index.cshtml" />
     <Content Include="App_Code\DateHelper.cshtml" />
+    <Content Include="Certs\apiclient_cert.p12" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -746,6 +780,8 @@
     <Content Include="Views\ErrorPage\NoRight.cshtml" />
     <Content Include="Views\Shared\_SignalRLayout.cshtml" />
     <Content Include="Views\Receive\Index.cshtml" />
+    <Content Include="Views\Shared\_PayDemoLayout.cshtml" />
+    <Content Include="Views\Home\Pay.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -756,7 +792,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Content\common\KindEditor-4.1.10\asp.net\bin\" />
-    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Quick.Common\Quick.Common.csproj">

@@ -34,6 +34,13 @@ namespace Quick.Web.Controllers
             HttpContext.GetOwinContext().Authentication.SignOut();
             return RedirectToAction("Login", "Account");
         }
-        #endregion        
+        #endregion
+
+        #region 在线支付
+        public ActionResult Pay()
+        {
+            return View();
+        } 
+        #endregion
     }
 }
